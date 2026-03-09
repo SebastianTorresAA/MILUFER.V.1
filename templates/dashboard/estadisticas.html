@@ -1,0 +1,167 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard/estadisticas.css' %}">
+
+    <!-- ============================================= -->
+    <!--           ESTADÍSTICAS DE VENTAS             -->
+    <!-- ============================================= -->
+    <div class="contenedor-estadisticas">
+
+        <!-- Título principal de la página -->
+        <div class="encabezado-estadisticas">
+            <h1>Estadísticas de Ventas</h1>
+            <p>Resumen general del rendimiento de la tienda</p>
+        </div>
+
+
+        <!-- ============================================= -->
+        <!--        TARJETAS CON MÉTRICAS CLAVE           -->
+        <!-- ============================================= -->
+        <div class="grid-metricas">
+
+            <!-- Tarjeta 1: Ventas totales -->
+            <div class="tarjeta-metrica">
+                <h3>Ventas Totales</h3>
+                <div class="numero-grande">{{ ventas_totales|default:"0.00" }} €</div>
+                <p>en todos los tiempos</p>
+            </div>
+
+            <!-- Tarjeta 2: Pedidos realizados -->
+            <div class="tarjeta-metrica">
+                <h3>Pedidos Totales</h3>
+                <div class="numero-grande">{{ total_pedidos|default:0 }}</div>
+                <p>pedidos completados</p>
+            </div>
+
+            <!-- Tarjeta 3: Clientes registrados -->
+            <div class="tarjeta-metrica">
+                <h3>Clientes</h3>
+                <div class="numero-grande">{{ total_clientes|default:0 }}</div>
+                <p>usuarios registrados</p>
+            </div>
+
+            <!-- Tarjeta 4: Ticket medio -->
+            <div class="tarjeta-metrica">
+                <h3>Ticket Medio</h3>
+                <div class="numero-grande">{{ ticket_medio|default:"0.00" }} €</div>
+                <p>promedio por pedido</p>
+            </div>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!--           GRÁFICO DE VENTAS (placeholder)    -->
+        <!-- ============================================= -->
+        <div class="seccion-grafico">
+            <h2>Ventas por Mes</h2>
+            
+            <!-- Canvas donde se renderizará el gráfico con Chart.js -->
+            <div class="canvas-contenedor">
+                <canvas id="graficoVentas" height="120"></canvas>
+            </div>
+            
+        </div>
+
+
+        <!-- ============================================= -->
+        <!--        PRODUCTOS MÁS VENDIDOS                -->
+        <!-- ============================================= -->
+        <div class="seccion-productos-vendidos">
+            <h2>Productos Más Vendidos</h2>
+
+            {% if productos_top %}
+                <table class="tabla-top-productos">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Unidades Vendidas</th>
+                            <th>Ingresos Generados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in productos_top %}
+                            <tr>
+                                <td>{{ item.nombre }}</td>
+                                <td>{{ item.unidades_vendidas }}</td>
+                                <td>{{ item.ingresos|floatformat:2 }} €</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="sin-datos">Aún no hay suficientes ventas para mostrar ranking.</p>
+            {% endif %}
+        </div>
+
+
+        <!-- ============================================= -->
+        <!--           PEDIDOS RECIENTES                  -->
+        <!-- ============================================= -->
+        <div class="seccion-pedidos-recientes">
+            <h2>Últimos Pedidos</h2>
+
+            {% if pedidos_recientes %}
+                <table class="tabla-pedidos-recientes">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pedido in pedidos_recientes %}
+                            <tr>
+                                <td>#{{ pedido.id }}</td>
+                                <td>{{ pedido.usuario.username|default:pedido.usuario.email }}</td>
+                                <td>{{ pedido.fecha_creacion|date:"d/m/Y H:i" }}</td>
+                                <td>{{ pedido.total }} €</td>
+                                <td>
+                                    <span class="estado-{{ pedido.estado|lower }}">
+                                        {{ pedido.get_estado_display|default:pedido.estado }}
+                                    </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="sin-datos">No hay pedidos recientes para mostrar.</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('graficoVentas').getContext('2d');
+    const graficoVentas = new Chart(ctx, {
+        type: 'bar', 
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
+            datasets: [{
+                label: 'Ventas (COP)',
+                data: [1],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+{% endblock %}

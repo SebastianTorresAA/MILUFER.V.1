@@ -1,0 +1,94 @@
+/*
+ * Milufer - direccion.css
+ * Estilos para el formulario de agregar dirección
+ * Estilo: limpio, elegante, centrado y femenino
+ * Colores coherentes con la tienda (rosado pastel)
+ */
+
+.contenedor-direccion {
+  max-width: 520px;
+  margin: 60px auto;
+  padding: 40px 32px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* Título */
+.contenedor-direccion h1 {
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #c4758f;           /* rosado intenso */
+  margin: 0 0 32px 0;
+  letter-spacing: -0.4px;
+}
+
+/* Cada campo del formulario */
+.campo {
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+.campo input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e0d8de;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #fdfdfd;
+  transition: all 0.25s ease;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: #e8b7c5;
+  box-shadow: 0 0 0 3px rgba(232, 183, 197, 0.15);
+}
+
+/* Botón Guardar */
+.boton-guardar {
+  background: #e8b7c5;
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.28s ease;
+  margin-top: 16px;
+  width: 100%;
+  max-width: 240px;
+}
+
+.boton-guardar:hover {
+  background: #c4758f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(196, 117, 143, 0.25);
+}
+
+/* Responsive - todo sigue centrado y bonito */
+@media (max-width: 600px) {
+  .contenedor-direccion {
+    margin: 40px 16px;
+    padding: 32px 24px;
+  }
+
+  .contenedor-direccion h1 {
+    font-size: 1.9rem;
+  }
+
+  .boton-guardar {
+    padding: 14px 32px;
+    font-size: 1.05rem;
+  }
+}

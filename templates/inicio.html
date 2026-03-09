@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    
+    <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+    
+    <!-- ============================================= -->
+    <!--           SECCIÓN DE BIENVENIDA              -->
+    <!-- ============================================= -->
+    <div class="bienvenida">
+        <h1>Bienvenido a Milufer</h1>
+        <p>
+            Tu tienda especial de accesorios y joyería.<br>
+            Piezas delicadas y únicas para cada momento importante.
+        </p>
+    </div>
+
+
+    <!-- ============================================= -->
+    <!--        SECCIÓN PRODUCTOS DESTACADOS          -->
+    <!-- ============================================= -->
+    <div class="productos-destacados">
+        <h2>Productos destacados</h2>
+
+        <div class="grid-productos">
+
+            {% for producto in productos %}
+                <div class="tarjeta-producto">
+                    <!-- Imagen del producto -->
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+
+                    <!-- Nombre del producto -->
+                    <h3>{{ producto.nombre }}</h3>
+
+                    <!-- Precio -->
+                    <div class="precio">{{ producto.precio }} €</div>
+
+                    <!-- Botón para ver más detalles -->
+                    <a href="{% url 'producto_detalle' producto.id %}" class="boton-ver">
+                        Ver producto
+                    </a>
+
+                </div>
+            {% empty %}
+                <!-- Mensaje cuando no hay productos -->
+                <p class="mensaje-vacio">
+                    Todavía no hay productos destacados para mostrar.
+                </p>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,152 @@
+/*
+ * Milufer - producto.css
+ * Estilos exclusivos para la página de detalle de producto
+ * Estilo: elegante, limpio, moderno y femenino
+ * Paleta principal:
+ *   - Rosado pastel suave:     #fdf2f8
+ *   - Rosado medio/acento:     #e8b7c5
+ *   - Rosado intenso (precio): #c4758f
+ *   - Fondo blanco:            #ffffff
+ *   - Gris claro fondo/sección:#f9f9f9
+ *   - Texto gris oscuro:       #555555
+ */
+
+.detalle-producto {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    background-color: #ffffff;
+}
+
+/* ───────────────────────────────────────────────
+   Columna de la imagen (izquierda)
+─────────────────────────────────────────────── */
+.columna-imagen {
+    flex: 1 1 400px;
+    min-width: 300px;
+}
+
+.imagen-principal {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    object-fit: cover;
+    display: block;
+}
+
+/* ───────────────────────────────────────────────
+   Columna de información (derecha)
+─────────────────────────────────────────────── */
+.columna-info {
+    flex: 1 1 500px;
+    min-width: 320px;
+}
+
+.columna-info h1 {
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: #444444;
+    margin: 0 0 16px 0;
+    line-height: 1.25;
+}
+
+/* Precio destacado */
+.precio {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #c4758f;
+    margin: 20px 0 30px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0e0e8;
+}
+
+/* Descripción */
+.descripcion {
+    margin-bottom: 40px;
+}
+
+.descripcion h3 {
+    font-size: 1.35rem;
+    color: #555555;
+    margin: 0 0 16px 0;
+    font-weight: 500;
+}
+
+.descripcion p {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: #666666;
+}
+
+/* Botón agregar al carrito */
+.acciones {
+    margin-top: 30px;
+}
+
+.boton-agregar {
+    display: inline-block;
+    background-color: #e8b7c5;
+    color: white;
+    padding: 14px 36px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.22s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.boton-agregar:hover {
+    background-color: #c4758f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(196, 117, 143, 0.25);
+}
+
+/* ───────────────────────────────────────────────
+   Responsive básico
+─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .detalle-producto {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .columna-imagen {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .columna-info {
+        text-align: center;
+    }
+    
+    .precio {
+        margin: 20px auto 30px;
+    }
+    
+    .acciones {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .columna-info h1 {
+        font-size: 2rem;
+    }
+    
+    .precio {
+        font-size: 1.9rem;
+    }
+    
+    .boton-agregar {
+        padding: 12px 28px;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 320px;
+    }
+}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/direccion_form.css' %}">
+<div class="contenedor-direccion">
+    <h1>Agregar dirección</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="campo">
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" id="direccion" required>
+        </div>
+
+        <div class="campo">
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" name="ciudad" id="ciudad" required>
+        </div>
+
+        <div class="campo">
+            <label for="referencia">Referencia:</label>
+            <input type="text" name="referencia" id="referencia">
+        </div>
+
+        <button type="submit" class="boton-guardar">Guardar</button>
+    </form>
+</div>
+{% endblock %}

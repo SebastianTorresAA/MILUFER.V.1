@@ -1,0 +1,134 @@
+/*
+ * Milufer - login.css
+ * Estilos simples y elegantes para la página de inicio de sesión
+ * Pensado para principiantes: comentarios claros y reglas básicas
+ * Colores principales:
+ *   - Rosado pastel:     #fdf2f8   (fondo suave y femenino)
+ *   - Rosado medio:      #e8b7c5   (botón y acentos)
+ *   - Rosado más fuerte: #c4758f   (hover del botón)
+ *   - Blanco:            #ffffff
+ *   - Gris claro:        #f9f9f9   (fondo general)
+ *   - Gris texto:        #666666
+ */
+
+.contenedor-login {
+    max-width: 420px;
+    margin: 80px auto;
+    padding: 40px 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+.contenedor-login h1 {
+    font-size: 2.1rem;
+    color: #c4758f;
+    margin: 0 0 12px 0;
+    font-weight: 400;
+}
+
+.contenedor-login p {
+    color: #777777;
+    margin: 0 0 30px 0;
+    font-size: 1.05rem;
+}
+
+/* ───────────────────────────────────────────────
+   Formulario
+─────────────────────────────────────────────── */
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ───────────────────────────────────────────────
+   Cada campo (div que envuelve label + input)
+─────────────────────────────────────────────── */
+.campo {
+    text-align: left;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555555;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.campo input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0d8de;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fdfdfd;
+    transition: border-color 0.2s ease;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: #e8b7c5;
+    box-shadow: 0 0 0 3px rgba(232, 183, 197, 0.15);
+}
+
+/* ───────────────────────────────────────────────
+   Botón de Iniciar Sesión
+─────────────────────────────────────────────── */
+.boton-login {
+    background-color: #e8b7c5;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+.boton-login:hover {
+    background-color: #c4758f;
+    transform: translateY(-1px);
+}
+
+/* ───────────────────────────────────────────────
+   Sección de "Crear cuenta"
+─────────────────────────────────────────────── */
+.opcion-registro {
+    margin-top: 30px;
+    font-size: 0.98rem;
+    color: #777777;
+}
+
+.opcion-registro p {
+    margin-bottom: 8px;
+}
+
+.enlace-registro {
+    color: #c4758f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.enlace-registro:hover {
+    text-decoration: underline;
+    color: #a55c7a;
+}
+
+/* ───────────────────────────────────────────────
+   Responsive básico (para pantallas pequeñas)
+─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .contenedor-login {
+        margin: 40px 15px;
+        padding: 30px 20px;
+    }
+    
+    .contenedor-login h1 {
+        font-size: 1.8rem;
+    }
+}

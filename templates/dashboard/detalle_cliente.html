@@ -1,0 +1,10 @@
+{% extends "dashboard/dashboard.html" %}
+{% block content %}
+<h1>Detalle del Cliente</h1>
+<p>ID: {{ cliente.id }}</p>
+<p>Usuario: {{ cliente.username }}</p>
+<p>Email: {{ cliente.email }}</p>
+<p>Nombre: {{ cliente.get_full_name }}</p>
+<p>Activo: {{ cliente.is_active }}</p>
+<a href="{% url 'dashboard:clientes' %}">Volver</a>
+{% endblock %}

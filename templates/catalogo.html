@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/catalogo.css' %}">
+
+<!-- ============================================= -->
+<!--           TÍTULO DE LA PÁGINA                -->
+<!-- ============================================= -->
+<div class="encabezado-catalogo">
+    <h1>Catálogo de Milufer</h1>
+    <p>Descubre todos nuestros accesorios y joyería</p>
+</div>
+
+<!-- ============================================= -->
+<!--           LISTA DE PRODUCTOS                 -->
+<!-- ============================================= -->
+<div class="contenedor-productos">
+
+    {% if productos %}
+        <!-- Hay productos → mostramos la cuadrícula -->
+        <div class="grid-productos">
+
+            {% for producto in productos %}
+                <div class="tarjeta-producto">
+
+                    <!-- Imagen del producto -->
+                    <div class="imagen-contenedor">
+                        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                    </div>
+
+                    <!-- Información -->
+                    <div class="info-producto">
+                        <h3>{{ producto.nombre }}</h3>
+                        <p class="precio">{{ producto.precio }} COP</p>
+
+                        {% if producto.stock > 0 %}
+                            <p class="stock">Disponibles: {{ producto.stock }}</p>
+
+                            <!-- Formulario para agregar al carrito -->
+                            <form method="post" action="{% url 'ventas:agregar_carrito' producto.id %}">
+                                {% csrf_token %}
+                                <label for="cantidad_{{ producto.id }}">Cantidad:</label>
+                                <input type="number" 
+                                       name="cantidad" 
+                                       id="cantidad_{{ producto.id }}" 
+                                       min="1" 
+                                       max="{{ producto.stock }}" 
+                                       value="1" 
+                                       required>
+                                <button type="submit" class="boton-agregar">Agregar al carrito</button>
+                            </form>
+                        {% else %}
+                            <p class="sin-stock">Agotado</p>
+                        {% endif %}
+
+                        <!-- Botón que lleva al detalle del producto -->
+                        <a href="{% url 'productos:producto_detalle' producto.id %}" class="boton-ver">
+                            Ver producto
+                        </a>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+    {% else %}
+        <!-- No hay productos cargados -->
+        <div class="sin-productos">
+            <p>Por el momento no hay productos en el catálogo.</p>
+            <p>Vuelve pronto, ¡estamos agregando cosas nuevas! 🌸</p>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}

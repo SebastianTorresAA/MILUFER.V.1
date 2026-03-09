@@ -1,0 +1,188 @@
+/*
+ * Milufer - pedidos.css
+ * Estilos simples y elegantes para la página de gestión de pedidos
+ * (dentro del dashboard)
+ * Pensado para principiantes: reglas básicas y comentarios claros
+ * Colores principales (coherentes con dashboard):
+ *   - Rosado pastel suave:   #fdf2f8   (fondos de encabezado)
+ *   - Rosado medio botón:    #e8b7c5   (botones de acción)
+ *   - Rosado fuerte hover:   #c4758f   (hover de botones)
+ *   - Fondo blanco:          #ffffff
+ *   - Gris claro filas:      #f9f9f9   (filas alternadas)
+ *   - Gris texto:            #666666
+ */
+
+.contenedor-pedidos {
+    padding: 30px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ───────────────────────────────────────────────
+   Encabezado de la sección (solo título en esta página)
+─────────────────────────────────────────────── */
+.encabezado-seccion {
+    margin-bottom: 35px;
+}
+
+.encabezado-seccion h1 {
+    margin: 0;
+    font-size: 2.1rem;
+    font-weight: 400;
+    color: #c4758f;
+}
+
+/* ───────────────────────────────────────────────
+   Tabla de pedidos
+─────────────────────────────────────────────── */
+.tabla-pedidos {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.tabla-pedidos th,
+.tabla-pedidos td {
+    padding: 16px 18px;
+    text-align: left;
+    border-bottom: 1px solid #f0e0e8;
+}
+
+.tabla-pedidos th {
+    background-color: #fdf2f8;
+    color: #555555;
+    font-weight: 600;
+    font-size: 1.02rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tabla-pedidos td {
+    color: #444444;
+    font-size: 0.98rem;
+}
+
+/* Filas alternadas (gris claro y blanco) */
+.tabla-pedidos tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Efecto hover en filas */
+.tabla-pedidos tbody tr:hover {
+    background-color: #fff5f8;
+}
+
+/* ───────────────────────────────────────────────
+   Estilos para los estados de pedido
+─────────────────────────────────────────────── */
+.estado {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.estado-pendiente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.estado-enviado {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.estado-entregado {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.estado-cancelado {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* ───────────────────────────────────────────────
+   Columna de acciones (Ver / Editar)
+─────────────────────────────────────────────── */
+.acciones {
+    white-space: nowrap;
+}
+
+.boton-ver,
+.boton-editar {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    margin-right: 8px;
+    transition: all 0.2s ease;
+}
+
+.boton-ver {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.boton-ver:hover {
+    background-color: #138496;
+}
+
+.boton-editar {
+    background-color: #e8b7c5;
+    color: white;
+}
+
+.boton-editar:hover {
+    background-color: #c4758f;
+}
+
+/* ───────────────────────────────────────────────
+   Mensaje cuando no hay pedidos
+─────────────────────────────────────────────── */
+.sin-pedidos {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.sin-pedidos p {
+    font-size: 1.2rem;
+    color: #777777;
+    margin: 12px 0;
+}
+
+/* ───────────────────────────────────────────────
+   Responsive básico
+─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .contenedor-pedidos {
+        padding: 20px 15px;
+    }
+    
+    .tabla-pedidos th,
+    .tabla-pedidos td {
+        padding: 12px 10px;
+        font-size: 0.92rem;
+    }
+    
+    .acciones {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .boton-ver,
+    .boton-editar {
+        margin-right: 0;
+        width: 100%;
+        text-align: center;
+    }
+}

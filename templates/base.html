@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Indica que usamos caracteres especiales del español -->
+    <meta charset="UTF-8">
+    
+    <!-- Hace que la página se vea bien en teléfonos y tablets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título que aparece en la pestaña del navegador -->
+    <!-- Las páginas hijas pueden cambiar o completar este título -->
+     
+    <title>Milufer - {% block title %}Accesorios y joyería{% endblock %}</title>
+    
+    <!-- Cargamos nuestro archivo CSS principal --> 
+    
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    
+</head>
+
+<body>
+
+    <header>
+        <div class="contenedor">
+
+            <h1>
+                <a href="{% url 'productos:inicio' %}">Milufer</a>
+            </h1>
+
+            <!-- Menú principal -->
+            <nav>
+                <ul>
+            {% if request.user.is_authenticated %}
+                 <!-- Si el usuario está logueado -->
+                <li><a href="{% url 'productos:inicio' %}">Inicio</a></li>
+                <li><a href="{% url 'productos:catalogo' %}">Catálogo</a></li>
+                <li><a href="{% url 'usuarios:perfil' %}">Perfil</a></li>
+                <li><a href="{% url 'ventas:carrito' %}">Carrito</a></li>
+                <li><a href="{% url 'usuarios:logout' %}">Cerrar sesión</a></li>
+            {% else %}
+                 <!-- Si NO está logueado -->
+                  <li><a href="{% url 'productos:inicio' %}">Inicio</a></li>
+                   <li><a href="{% url 'productos:catalogo' %}">Catálogo</a></li>
+                 <li><a href="{% url 'usuarios:login' %}">Login</a></li>
+                 <li><a href="{% url 'usuarios:registro' %}">Registro</a></li>
+                 {% endif %}
+            {% if request.user.is_superuser %}
+                <li><a href="{% url 'dashboard:home' %}">Panel Admin</a></li>
+            {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!--           CONTENIDO PRINCIPAL              -->
+    <!-- ========================================== -->
+    <main>
+        <!-- 
+            Aquí va el contenido específico de cada página 
+            (la parte que cambia en cada archivo HTML)
+        -->
+        {% block content %}
+            <!-- Mensaje por si se abre directamente este archivo -->
+            <p>Esta es la plantilla base.<br>El contenido real aparece en las otras páginas.</p>
+        {% endblock %}
+    </main>
+
+    <!-- ========================================== -->
+    <!--                PIE DE PÁGINA               -->
+    <!-- ========================================== -->
+    <footer>
+        <div class="contenedor">
+            <!-- Pequeña descripción de la tienda -->
+            <p>Milufer • Tu tienda de accesorios y joyería con estilo y cariño</p>
+            
+            <!-- Información de copyright -->
+            <p>© {% now "Y" %} Milufer - Todos los derechos reservados</p>
+
+            <!-- Enlaces simples a redes sociales (solo texto) -->
+            <div class="redes-sociales">
+                <a href="#">Instagram</a>  
+                <a href="#">Facebook</a>  
+                <a href="#">TikTok</a>
+                <a href="#">Whatsapp</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+/*
+ * Milufer - productos.css
+ * Estilos simples y elegantes para la página de gestión de productos
+ * (dentro del dashboard)
+ * Pensado para principiantes: reglas claras y comentarios detallados
+ * Colores principales:
+ *   - Rosado pastel suave:   #fdf2f8   (fondos de encabezado)
+ *   - Rosado medio botón:    #e8b7c5   (botón agregar)
+ *   - Rosado fuerte hover:   #c4758f   (hover del botón)
+ *   - Fondo blanco:          #ffffff
+ *   - Gris claro filas:      #f9f9f9   (filas alternadas)
+ *   - Gris texto:            #666666
+ */
+
+.contenedor-gestion {
+    padding: 30px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ───────────────────────────────────────────────
+   Encabezado de la sección (título + botón agregar)
+─────────────────────────────────────────────── */
+.encabezado-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.encabezado-seccion h1 {
+    margin: 0;
+    font-size: 2.1rem;
+    font-weight: 400;
+    color: #c4758f;
+}
+
+.boton-agregar {
+    background-color: #e8b7c5;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: all 0.22s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.boton-agregar:hover {
+    background-color: #c4758f;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(196, 117, 143, 0.20);
+}
+
+/* ───────────────────────────────────────────────
+   Tabla de productos
+─────────────────────────────────────────────── */
+.tabla-productos {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.tabla-productos th,
+.tabla-productos td {
+    padding: 16px 18px;
+    text-align: left;
+    border-bottom: 1px solid #f0e0e8;
+}
+
+.tabla-productos th {
+    background-color: #fdf2f8;
+    color: #555555;
+    font-weight: 600;
+    font-size: 1.02rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tabla-productos td {
+    color: #444444;
+    font-size: 0.98rem;
+}
+
+/* Filas alternadas (gris claro y blanco) */
+.tabla-productos tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Efecto hover en filas */
+.tabla-productos tbody tr:hover {
+    background-color: #fff5f8;
+}
+
+/* Texto "Agotado" en rojo suave */
+.sin-stock {
+    color: #e74c3c;
+    font-weight: 500;
+}
+
+/* ───────────────────────────────────────────────
+   Columna de acciones (Editar / Eliminar)
+─────────────────────────────────────────────── */
+.acciones {
+    white-space: nowrap;
+}
+
+.boton-editar,
+.boton-eliminar {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    margin-right: 8px;
+    transition: all 0.2s ease;
+}
+
+.boton-editar {
+    background-color: #3498db;
+    color: white;
+}
+
+.boton-editar:hover {
+    background-color: #2980b9;
+}
+
+.boton-eliminar {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.boton-eliminar:hover {
+    background-color: #c0392b;
+}
+
+/* ───────────────────────────────────────────────
+   Mensaje cuando no hay productos
+─────────────────────────────────────────────── */
+.sin-productos {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.sin-productos p {
+    font-size: 1.2rem;
+    color: #777777;
+    margin: 12px 0;
+}
+
+.boton-agregar-grande {
+    background-color: #e8b7c5;
+    color: white;
+    padding: 14px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 20px;
+    transition: all 0.22s ease;
+}
+
+.boton-agregar-grande:hover {
+    background-color: #c4758f;
+    transform: translateY(-1px);
+}
+
+/* ───────────────────────────────────────────────
+   Responsive básico
+─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .encabezado-seccion {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .tabla-productos th,
+    .tabla-productos td {
+        padding: 12px 10px;
+        font-size: 0.92rem;
+    }
+    
+    .acciones {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .boton-editar,
+    .boton-eliminar {
+        margin-right: 0;
+        width: 100%;
+        text-align: center;
+    }
+}

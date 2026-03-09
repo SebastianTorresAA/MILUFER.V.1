@@ -1,0 +1,178 @@
+/*
+ * Milufer - catalogo.css
+ * Estilos exclusivos para la página de catálogo
+ * Estilo: limpio, elegante, moderno y femenino
+ * Paleta principal:
+ *   - Rosado pastel fondo/acento:    #fdf2f8
+ *   - Rosado medio (botones):        #e8b7c5
+ *   - Rosado intenso (hover/precio): #c4758f
+ *   - Fondo tarjetas/blanco:         #ffffff
+ *   - Fondo sección/gris claro:      #f9f9f9
+ *   - Texto principal:               #555555
+ */
+
+.encabezado-catalogo {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(to bottom, #fdf2f8 0%, #ffffff 100%);
+}
+
+.encabezado-catalogo h1 {
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: #c4758f;
+    margin-bottom: 12px;
+}
+
+.encabezado-catalogo p {
+    font-size: 1.18rem;
+    color: #777;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ───────────────────────────────────────────────
+   Contenedor general de productos
+─────────────────────────────────────────────── */
+.contenedor-productos {
+    padding: 0 20px 60px;
+    background-color: #f9f9f9;
+}
+
+/* ───────────────────────────────────────────────
+   Grid de productos
+─────────────────────────────────────────────── */
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+/* ───────────────────────────────────────────────
+   Tarjeta de producto
+─────────────────────────────────────────────── */
+.tarjeta-producto {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transition: all 0.25s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+}
+
+/* Imagen */
+.imagen-contenedor {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+}
+
+.tarjeta-producto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.tarjeta-producto:hover img {
+    transform: scale(1.06);
+}
+
+/* Información inferior */
+.info-producto {
+    padding: 18px 20px 24px;
+    text-align: center;
+}
+
+.info-producto h3 {
+    font-size: 1.18rem;
+    font-weight: 500;
+    color: #444;
+    margin: 0 0 10px 0;
+    line-height: 1.35;
+    min-height: 2.6em;  /* evita salto de altura con nombres largos */
+}
+
+.info-producto .precio {
+    font-size: 1.32rem;
+    font-weight: 600;
+    color: #c4758f;
+    margin: 6px 0 16px 0;
+}
+
+/* ───────────────────────────────────────────────
+   Botón "Ver producto"
+─────────────────────────────────────────────── */
+.boton-ver {
+    display: inline-block;
+    background-color: #e8b7c5;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.98rem;
+    transition: all 0.22s ease;
+}
+
+.boton-ver:hover {
+    background-color: #c4758f;
+    transform: translateY(-1px);
+}
+
+/* ───────────────────────────────────────────────
+   Mensaje cuando no hay productos
+─────────────────────────────────────────────── */
+.sin-productos {
+    text-align: center;
+    padding: 100px 20px;
+    font-size: 1.25rem;
+    color: #888;
+    font-style: italic;
+}
+
+.sin-productos p {
+    margin: 12px 0;
+}
+
+/* ───────────────────────────────────────────────
+   Responsive básico
+─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .encabezado-catalogo {
+        padding: 50px 15px 30px;
+    }
+    
+    .encabezado-catalogo h1 {
+        font-size: 2.3rem;
+    }
+    
+    .grid-productos {
+        gap: 20px;
+    }
+    
+    .imagen-contenedor {
+        height: 240px;
+    }
+}
+
+@media (max-width: 480px) {
+    .encabezado-catalogo h1 {
+        font-size: 2rem;
+    }
+    
+    .info-producto h3 {
+        font-size: 1.1rem;
+    }
+    
+    .boton-ver {
+        padding: 9px 18px;
+        font-size: 0.95rem;
+    }
+}

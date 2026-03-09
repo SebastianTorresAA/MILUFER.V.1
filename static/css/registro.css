@@ -1,0 +1,140 @@
+/*
+ * Milufer - registro.css
+ * Estilos simples y elegantes para la página de registro
+ * Pensado para principiantes: reglas básicas y comentarios claros
+ * Colores principales:
+ *   - Rosado pastel fondo:   #fdf2f8
+ *   - Rosado medio botón:    #e8b7c5
+ *   - Rosado hover:          #c4758f
+ *   - Fondo blanco:          #ffffff
+ *   - Gris claro:            #f9f9f9
+ *   - Texto gris oscuro:     #666666
+ */
+
+.contenedor-registro {
+    max-width: 440px;
+    margin: 70px auto;
+    padding: 40px 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+    text-align: center;
+}
+
+.contenedor-registro h1 {
+    font-size: 2.1rem;
+    color: #c4758f;
+    margin: 0 0 10px 0;
+    font-weight: 400;
+}
+
+.contenedor-registro p {
+    color: #777777;
+    margin: 0 0 32px 0;
+    font-size: 1.05rem;
+}
+
+/* ───────────────────────────────────────────────
+   Formulario completo
+─────────────────────────────────────────────── */
+.formulario-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* ───────────────────────────────────────────────
+   Cada grupo campo (label + input)
+─────────────────────────────────────────────── */
+.campo {
+    text-align: left;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555555;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.campo input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0d8de;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fdfdfd;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: #e8b7c5;
+    box-shadow: 0 0 0 3px rgba(232, 183, 197, 0.12);
+}
+
+/* ───────────────────────────────────────────────
+   Botón "Registrarse"
+─────────────────────────────────────────────── */
+.boton-registro {
+    background-color: #e8b7c5;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    margin-top: 12px;
+}
+
+.boton-registro:hover {
+    background-color: #c4758f;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(196, 117, 143, 0.20);
+}
+
+/* ───────────────────────────────────────────────
+   Sección "¿Ya tienes cuenta?"
+─────────────────────────────────────────────── */
+.opcion-login {
+    margin-top: 32px;
+    font-size: 0.98rem;
+    color: #777777;
+}
+
+.opcion-login p {
+    margin-bottom: 8px;
+}
+
+.enlace-login {
+    color: #c4758f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.enlace-login:hover {
+    text-decoration: underline;
+    color: #a55c7a;
+}
+
+/* ───────────────────────────────────────────────
+   Responsive básico (pantallas pequeñas)
+─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .contenedor-registro {
+        margin: 40px 15px;
+        padding: 30px 20px;
+    }
+    
+    .contenedor-registro h1 {
+        font-size: 1.8rem;
+    }
+    
+    .boton-registro {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
