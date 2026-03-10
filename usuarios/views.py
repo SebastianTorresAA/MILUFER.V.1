@@ -14,8 +14,8 @@ def login_view(request):
             # Redirige al inicio de productos usando namespace
             return redirect("productos:inicio")
         else:
-            return render(request, "login.html", {"error": "Usuario o contraseña incorrectos"})
-    return render(request, "login.html")
+            return render(request, "sesion.html", {"error": "Usuario o contraseña incorrectos"})
+    return render(request, "sesion.html")
 
 # REGISTRO
 def registro_view(request):
