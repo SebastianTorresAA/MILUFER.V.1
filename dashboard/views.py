@@ -6,6 +6,7 @@ from ventas.models import Pedido, PedidoProducto
 from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 from django.contrib.auth.decorators import user_passes_test
 from django import forms
+from django.contrib import messages
 
 # Decorador que restringe a superusuarios
 def superuser_required(view_func):
@@ -124,6 +125,39 @@ def pedidos_view(request):
     pedidos = Pedido.objects.all().order_by("-fecha_creacion")
     return render(request, "dashboard/pedidos.html", {"pedidos": pedidos})
 
+@superuser_required
+def detalle_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    return render(request, "dashboard/detalle_pedido.html", {"pedido": pedido})
+
+@superuser_required
+def confirmar_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+
+    # Descontar stock de cada producto en el pedido
+    for item in pedido.items.all():  # gracias al related_name='items'
+        producto = item.producto
+        if producto.stock >= item.cantidad:
+            producto.stock -= item.cantidad
+            producto.save()
+        else:
+            # Si no hay suficiente stock, puedes decidir qué hacer:
+            # cancelar el pedido, marcarlo como expirado, etc.
+            messages.error(request, f"Stock insuficiente para {producto.nombre}")
+            return redirect("dashboard:pedidos")
+
+    # Cambiar estado del pedido
+    pedido.estado = "confirmado"
+    pedido.save()
+
+    return redirect("dashboard:pedidos")
+
+@superuser_required
+def cancelar_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    pedido.estado = "cancelado"
+    pedido.save()
+    return redirect("dashboard:pedidos")
 # -------------------------------
 # Dashboard principal
 # -------------------------------
