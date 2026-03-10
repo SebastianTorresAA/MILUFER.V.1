@@ -1,32 +1,36 @@
 /* ================================================
-   base.css - Milufer (versión simétrica y equilibrada)
-   Enfoque: simetría visual, espaciados uniformes, armonía
-   Mejoras respecto a la anterior:
-   - Espaciados múltiplos de 8px/16px/32px para ritmo visual
-   - Centrado más preciso y simétrico
-   - Nav y footer con alineación equilibrada
-   - Header y hero con proporciones simétricas
-   - Responsive con breakpoints limpios y simétricos
+   home.css (o base.css) – Estilo completo del sitio
+   Vibe ultra vibrante pink/hot magenta – 2026
+   Paleta principal: #ff99cc, #ff66b2, #e91e63, #ffb3d9, #d63384
+   Última actualización: iconos de redes sociales simplificados y brillantes
    ================================================ */
 
-:root {
-  --rosa-pastel:    #fdf2f7;
-  --rosa-medio:     #f8d7e3;
-  --rosa-intenso:   #c4758f;
-  --dorado-suave:   #d4af37;
-  --gris-muy-claro: #fafafa;
-  --gris-claro:     #f5f5f5;
-  --gris-texto:     #5f5f5f;
-  --gris-suave:     #777777;
-  --blanco:         #ffffff;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-  --transicion:     all 0.28s ease;
-  --radio-borde:    12px;
-  --sombra-suave:   0 4px 20px rgba(0,0,0,0.06);
-  --espaciado-base: 8px;   /* base para múltiplos: 16px, 24px, 32px, etc. */
+:root {
+  /* Colores ultra vivos */
+  --pink-hot:        #ff66b2;     /* botones principales, hover fuerte */
+  --pink-deep:       #e91e63;     /* acentos intensos, precios, títulos */
+  --pink-medium:     #ff99cc;     /* header, footer, bordes */
+  --pink-border:     #ffb3d9;     /* bordes suaves, focus */
+  --pink-bg-start:   #ffeaf6;     /* fondo gradiente claro */
+  --pink-bg-end:     #fdf2fb;     /* fondo gradiente más suave */
+  --pink-glow:       #ffccdd;     /* glows y fondos hero */
+  --text-pink:       #d63384;     /* textos destacados */
+  --text-dark:       #222;
+  --white:           #ffffff;
+
+  /* Efectos */
+  --radius-pill:     9999px;
+  --radius-md:       16px;
+  --transition-pop:  all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.18s ease-out;
+  --shadow-glow:     0 6px 24px rgba(233, 30, 99, 0.28);
+  --shadow-hover:    0 12px 36px rgba(233, 30, 99, 0.38);
+  --glow-text:       0 3px 16px rgba(233, 30, 99, 0.22);
 }
 
-/* Reset y base */
+/* Reset + base */
 * {
   margin: 0;
   padding: 0;
@@ -34,205 +38,242 @@
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background-color: var(--gris-muy-claro);
-  color: var(--gris-texto);
-  line-height: 1.65;
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: linear-gradient(135deg, var(--pink-bg-start) 0%, var(--pink-bg-end) 100%);
+  color: var(--text-dark);
+  line-height: 1.6;
   min-height: 100vh;
 }
 
-/* Contenedor principal - simétrico y centrado */
+/* Contenedor principal */
 .contenedor {
-  max-width: 1240px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 32px;           /* simétrico izquierda/derecha */
+  padding: 0 1.8rem;
 }
 
-/* ────────────────────────────────────────────────
-   Header + Navbar - simetría perfecta
-───────────────────────────────────────────────── */
+/* Header + Navbar */
 header {
-  background-color: var(--rosa-pastel);
-  padding: 32px 0;           /* padding vertical simétrico */
-  border-bottom: 1px solid rgba(196, 117, 143, 0.12);
+  background: var(--pink-medium);
+  color: white;
+  padding: 1.4rem 0;
+  box-shadow: 0 6px 25px rgba(255, 102, 178, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
 header .contenedor {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 32px;
+  gap: 2.5rem;
 }
 
 header h1 {
-  font-size: 2.25rem;
-  font-weight: 500;
-  color: var(--rosa-intenso);
-  letter-spacing: -0.5px;
-  margin: 0;
+  font-size: clamp(2.1rem, 6vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
 header h1 a {
-  color: inherit;
+  color: white;
   text-decoration: none;
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  gap: 40px;                 /* separación simétrica y generosa */
+  gap: 2.5rem;
   margin: 0;
   padding: 0;
 }
 
 nav a {
-  color: var(--gris-texto);
+  color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.1rem;
-  padding: 8px 0;            /* padding vertical simétrico */
-  transition: var(--transicion);
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius-pill);
+  transition: var(--transition-pop);
+  background: rgba(255,255,255,0.15);
 }
 
 nav a:hover,
 nav a:focus {
-  color: var(--rosa-intenso);
+  background: white;
+  color: var(--pink-deep);
+  transform: scale(1.12) translateY(-2px);
+  box-shadow: var(--shadow-glow);
 }
 
-/* ────────────────────────────────────────────────
-   Bienvenida / Hero - centrado perfecto
-───────────────────────────────────────────────── */
+/* Hero / Bienvenida */
 .bienvenida {
   text-align: center;
-  padding: 120px 32px 140px;   /* simetría vertical generosa */
-  background: linear-gradient(to bottom, var(--rosa-pastel) 0%, var(--blanco) 70%);
+  padding: clamp(120px, 22vh, 200px) 1.8rem clamp(90px, 18vh, 160px);
+  background: linear-gradient(135deg, var(--pink-glow) 0%, var(--pink-bg-start) 50%, var(--pink-bg-end) 100%);
+  position: relative;
+}
+
+.bienvenida::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(255,102,178,0.25) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .bienvenida h1 {
-  font-size: clamp(2.8rem, 7vw, 4.5rem);
-  font-weight: 400;
-  color: var(--rosa-intenso);
-  margin-bottom: 32px;
-  letter-spacing: -0.8px;
-  line-height: 1.1;
+  font-size: clamp(3.8rem, 10vw, 7rem);
+  font-weight: 800;
+  color: var(--pink-deep);
+  margin-bottom: 2rem;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  text-shadow: var(--glow-text);
 }
 
 .bienvenida p {
-  font-size: clamp(1.2rem, 2.8vw, 1.4rem);
-  color: var(--gris-suave);
-  max-width: 780px;
+  font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+  color: #333;
+  max-width: 900px;
   margin: 0 auto;
-  line-height: 1.8;
+  font-weight: 500;
 }
 
-/* ────────────────────────────────────────────────
-   Footer - simetría total
-───────────────────────────────────────────────── */
+/* Footer */
 footer {
-  background-color: var(--rosa-pastel);
-  color: var(--gris-suave);
-  padding: 64px 0 48px;
-  margin-top: 80px;
-  border-top: 1px solid rgba(196, 117, 143, 0.12);
+  background: var(--pink-medium);
+  color: white;
+  padding: 5rem 0 3.5rem;
+  margin-top: 7rem;
   text-align: center;
+  box-shadow: 0 -8px 35px rgba(255,102,178,0.25);
 }
 
 footer p {
-  margin: 12px 0;
-  font-size: 0.98rem;
+  margin: 1rem 0;
+  font-size: 1.1rem;
 }
 
 footer .copyright {
-  margin-top: 32px;
-  font-size: 0.92rem;
-  color: #888;
+  margin-top: 2.5rem;
+  font-size: 0.95rem;
+  opacity: 0.95;
 }
 
-/* ────────────────────────────────────────────────
-   Botones de redes sociales (footer) - centrados
-───────────────────────────────────────────────── */
+/* Redes sociales – versión que te gustaba más (blancos brillantes, fill en hover) */
 .redes-sociales {
-  margin: 24px 0 32px;
+  margin: 2.2rem 0 2.8rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.4rem;
 }
 
 .redes-sociales a {
-  display: inline-block;
-  margin: 0 16px;
-  color: var(--gris-suave);
-  font-size: 1.6rem;
-  transition: var(--transicion);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  font-size: 1.8rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 3px 12px rgba(233, 30, 99, 0.18);
 }
 
 .redes-sociales a:hover,
 .redes-sociales a:focus {
-  color: var(--rosa-intenso);
-  transform: translateY(-3px);
+  background: var(--pink-hot);
+  transform: translateY(-5px) scale(1.10);
+  box-shadow: 0 10px 28px rgba(233, 30, 99, 0.35);
+  color: white;
 }
 
-/* ────────────────────────────────────────────────
-   Responsive simétrico y equilibrado
-───────────────────────────────────────────────── */
-@media (max-width: 992px) {
-  .contenedor {
-    padding: 0 24px;
-  }
-  
+/* Colores específicos por red en hover */
+.redes-sociales a[href*="instagram.com"]:hover,
+.redes-sociales a[href*="instagram"]:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.redes-sociales a[href*="facebook.com"]:hover,
+.redes-sociales a[href*="facebook"]:hover {
+  background: #1877F2;
+}
+
+.redes-sociales a[href*="tiktok.com"]:hover,
+.redes-sociales a[href*="tiktok"]:hover {
+  background: #000000;
+}
+
+.redes-sociales a[href*="whatsapp.com"]:hover,
+.redes-sociales a[href*="wa.me"]:hover {
+  background: #25D366;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
   header .contenedor {
     flex-direction: column;
-    text-align: center;
-    gap: 24px;
+    gap: 1.8rem;
   }
   
   nav ul {
+    gap: 1.6rem;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 32px;
   }
 }
 
 @media (max-width: 768px) {
   .bienvenida {
-    padding: 80px 24px 100px;
+    padding: 90px 1.2rem 120px;
   }
   
-  .bienvenida h1 {
-    font-size: clamp(2.4rem, 8vw, 3.2rem);
+  nav a {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
   }
   
-  nav ul {
-    gap: 24px;
-    flex-wrap: wrap;
-    justify-content: center;
+  .redes-sociales {
+    gap: 1.2rem;
   }
   
   .redes-sociales a {
-    margin: 0 12px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.65rem;
   }
 }
 
 @media (max-width: 480px) {
   header h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   nav a {
-    font-size: 1rem;
-    padding: 8px 12px;
-  }
-  
-  .bienvenida {
-    padding: 60px 16px 80px;
+    font-size: 0.98rem;
+    padding: 0.5rem 1rem;
   }
   
   .bienvenida h1 {
-    font-size: 2.1rem;
+    font-size: clamp(2.8rem, 11vw, 4.2rem);
   }
   
-  .redes-sociales {
-    margin: 20px 0;
+  .bienvenida p {
+    font-size: 1.15rem;
   }
   
   .redes-sociales a {
-    font-size: 1.4rem;
-    margin: 0 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
   }
 }

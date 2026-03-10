@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <link rel="stylesheet" href="{% static 'css/carrito.css' %}">
 
 <!-- ============================================= -->
@@ -42,12 +43,17 @@
 
                         <!-- Acciones -->
                         <td>
-                            <!-- Eliminar 1 unidad -->
-                            <a href="{% url 'ventas:eliminar_uno' item.producto.id %}" 
-                               class="boton-eliminar-uno">Eliminar 1</a>
-                            <!-- Eliminar todo el producto -->
-                            <a href="{% url 'ventas:eliminar_carrito' item.producto.id %}" 
-                               class="boton-eliminar-todo">Eliminar todo</a>
+                            {% if item.cantidad == 1 %}
+                                <!-- Si solo hay una unidad, mostrar solo Eliminar -->
+                                <a href="{% url 'ventas:eliminar_carrito' item.producto.id %}" 
+                                   class="boton-eliminar-uno">Eliminar</a>
+                            {% else %}
+                                <!-- Si hay más de una unidad, mostrar ambos -->
+                                <a href="{% url 'ventas:eliminar_uno' item.producto.id %}" 
+                                   class="boton-eliminar-uno">Eliminar 1</a>
+                                <a href="{% url 'ventas:eliminar_carrito' item.producto.id %}" 
+                                   class="boton-eliminar-todo">Eliminar todo</a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
@@ -81,3 +87,4 @@
 
 </div>
 {% endblock %}
+

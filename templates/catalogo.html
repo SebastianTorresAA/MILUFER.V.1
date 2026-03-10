@@ -36,20 +36,6 @@
 
                         {% if producto.stock > 0 %}
                             <p class="stock">Disponibles: {{ producto.stock }}</p>
-
-                            <!-- Formulario para agregar al carrito -->
-                            <form method="post" action="{% url 'ventas:agregar_carrito' producto.id %}">
-                                {% csrf_token %}
-                                <label for="cantidad_{{ producto.id }}">Cantidad:</label>
-                                <input type="number" 
-                                       name="cantidad" 
-                                       id="cantidad_{{ producto.id }}" 
-                                       min="1" 
-                                       max="{{ producto.stock }}" 
-                                       value="1" 
-                                       required>
-                                <button type="submit" class="boton-agregar">Agregar al carrito</button>
-                            </form>
                         {% else %}
                             <p class="sin-stock">Agotado</p>
                         {% endif %}
