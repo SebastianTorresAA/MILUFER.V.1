@@ -13,12 +13,17 @@ from urllib.parse import quote
 # ────────────────────────────────────────────────
 # AGREGAR PRODUCTO AL CARRITO (sesión)
 # ────────────────────────────────────────────────
+@login_required
 def agregar_carrito(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id, activo=True)
 
     if producto.stock < 1:
         messages.error(request, f"¡Lo sentimos! {producto.nombre} está sin stock.")
         return redirect("productos:detalle", producto_id=producto.id)
+    
+    cantidad = int(request.POST.get("cantidad", 1))
+    if cantidad < 1:
+        cantidad = 1
 
     carrito = request.session.get("carrito", {})
     pid_str = str(producto.id)
@@ -26,7 +31,7 @@ def agregar_carrito(request, producto_id):
     if pid_str not in carrito:
         carrito[pid_str] = {"cantidad": 0}
 
-    carrito[pid_str]["cantidad"] += 1
+    carrito[pid_str]["cantidad"] += cantidad
 
     if carrito[pid_str]["cantidad"] > producto.stock:
         carrito[pid_str]["cantidad"] = producto.stock
