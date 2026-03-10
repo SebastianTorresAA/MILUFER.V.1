@@ -1,38 +1,38 @@
 /* ================================================
-   registro.css - Milufer (versión unificada y vibrante 2026)
-   Estilo premium hot pink, coherente con login/home/productos
-   Botones iguales al resto del sitio, sin opacidad "muerta"
+   login.css - Milufer (versión unificada y vibrante)
+   Colores y estilo idénticos al resto del sitio (hot pink energy)
+   Botones iguales a los del header/nav/redes
    ================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* Variables locales para no sobrescribir las globales */
-.contenedor-registro {
-  max-width: 460px;
+/* Usamos las mismas variables que en home.css para coherencia total */
+.contenedor-login {
+  max-width: 440px;
   width: 90%;
   margin: 60px auto;
-  padding: 50px 42px;
-  background: rgba(255, 255, 255, 0.84);       /* más vivo y menos opaco */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 22px;
-  border: 1px solid rgba(255, 102, 178, 0.20);  /* borde rosa sutil */
-  box-shadow: 0 14px 48px rgba(233, 30, 99, 0.20);
+  padding: 48px 40px;
+  background: rgba(255, 255, 255, 0.82);     /* menos opaco que antes */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 102, 178, 0.18);  /* borde rosa sutil */
+  box-shadow: 0 12px 40px rgba(233, 30, 99, 0.18);
   text-align: center;
   font-family: 'Poppins', system-ui, sans-serif;
 }
 
 /* Títulos y textos */
-.contenedor-registro h1 {
+.contenedor-login h1 {
   font-size: clamp(2.4rem, 6vw, 3.2rem);
   font-weight: 800;
-  color: #e91e63;                        /* mismo rosa intenso del sitio */
+  color: #e91e63;  /* mismo rosa intenso que en hero y precios */
   margin-bottom: 16px;
   letter-spacing: -0.6px;
   text-shadow: 0 2px 12px rgba(233, 30, 99, 0.15);
 }
 
-.contenedor-registro p {
+.contenedor-login p {
   color: #444;
   font-size: 1.08rem;
   margin-bottom: 40px;
@@ -40,7 +40,7 @@
 }
 
 /* Formulario */
-.formulario-registro {
+.formulario-login {
   display: flex;
   flex-direction: column;
   gap: 26px;
@@ -62,24 +62,24 @@
 .campo input {
   width: 100%;
   padding: 14px 18px;
-  border: 1px solid #ffb3d9;             /* borde rosa claro del tema */
+  border: 1px solid #ffb3d9;       /* borde rosa claro del sitio */
   border-radius: 12px;
   font-size: 1rem;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.9);
   transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   color: #222;
 }
 
 .campo input:focus {
   outline: none;
-  border-color: #ff66b2;                 /* hot pink principal */
+  border-color: #ff66b2;           /* hot pink del sitio */
   box-shadow: 0 0 0 4px rgba(255, 102, 178, 0.22);
   background: white;
 }
 
-/* Botón "Registrarse" - exactamente igual estilo que en login y otros botones del sitio */
-.boton-registro {
-  background: #ff66b2;                   /* mismo color base que botones principales */
+/* Botón de Iniciar Sesión - IGUAL al estilo de los botones del sitio */
+.boton-login {
+  background: #ff66b2;             /* mismo color que botones principales */
   color: white;
   border: none;
   padding: 15px;
@@ -92,48 +92,48 @@
   letter-spacing: 0.5px;
 }
 
-.boton-registro:hover {
-  background: #e91e63;                   /* hover intenso como en el resto */
+.boton-login:hover {
+  background: #e91e63;             /* mismo hover intenso que en otros botones */
   transform: translateY(-3px) scale(1.04);
   box-shadow: 0 12px 32px rgba(233, 30, 99, 0.35);
 }
 
-/* Sección "¿Ya tienes cuenta?" */
-.opcion-login {
+/* Sección "Crear cuenta" */
+.opcion-registro {
   margin-top: 36px;
   font-size: 1rem;
   color: #555;
 }
 
-.opcion-login p {
+.opcion-registro p {
   margin-bottom: 10px;
 }
 
-.enlace-login {
-  color: #e91e63;                        /* mismo color que enlaces destacados */
+.enlace-registro {
+  color: #e91e63;                  /* mismo color que enlaces destacados */
   text-decoration: none;
   font-weight: 600;
   transition: all 0.28s ease;
 }
 
-.enlace-login:hover {
+.enlace-registro:hover {
   color: #ff66b2;
   text-decoration: underline;
 }
 
-/* Responsive - solo afecta el contenedor de registro */
+/* Responsive - solo afecta login */
 @media (max-width: 480px) {
-  .contenedor-registro {
+  .contenedor-login {
     margin: 40px 16px;
-    padding: 42px 30px;
+    padding: 40px 28px;
   }
   
-  .contenedor-registro h1 {
+  .contenedor-login h1 {
     font-size: 2.2rem;
   }
   
   .campo input,
-  .boton-registro {
+  .boton-login {
     padding: 13px 16px;
   }
 }
