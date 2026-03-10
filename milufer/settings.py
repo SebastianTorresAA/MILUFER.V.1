@@ -125,4 +125,5 @@ STATICFILES_DIRS = [BASE_DIR / "static"]  # <-- aquí dices dónde están tus ar
 STATIC_ROOT = BASE_DIR / "staticfiles"    # <-- para collectstatic en producción
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+LOGIN_URL = 'usuarios:login'
 

@@ -34,6 +34,20 @@
                 <p>{{ producto.descripcion }}</p>
             </div>
 
+            <!-- Formulario para agregar al carrito -->
+                        <form method="post" action="{% url 'ventas:agregar_carrito' producto.id %}">
+                            {% csrf_token %}
+                        <label for="cantidad_{{ producto.id }}">Cantidad:</label>
+                        <input type="number" 
+                        name="cantidad" 
+                        id="cantidad_{{ producto.id }}" 
+                        min="1" 
+                        max="{{ producto.stock }}" 
+                        value="1" 
+                        required>
+                        <button type="submit" class="boton-agregar">Agregar al carrito</button>
+                    </form>
+
             <!-- Botón de agregar al carrito -->
            <div class="acciones">
             <a href="{% url 'ventas:agregar_carrito' producto.id %}" class="boton-agregar">
