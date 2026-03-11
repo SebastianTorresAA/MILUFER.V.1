@@ -62,6 +62,15 @@
                        required>
             </div>
 
+            <div class="campo">
+                <label for="direccion">Dirección</label>
+                <input type="text"
+                       name="direccion"
+                       id="direccion"
+                       placeholder="Ingresa tu dirección"
+                       required>
+            </div>
+
             <!-- Campo: Contraseña -->
             <div class="campo">
                 <label for="password1">Contraseña</label>
@@ -95,8 +104,6 @@
             <a href="{% url 'usuarios:login' %}" class="enlace-login">
                 Iniciar sesión
             </a>
-        </div>
-
     </div>
 
 {% endblock %}

@@ -1,206 +1,186 @@
-/*
- * Milufer - productos.css
- * Estilos simples y elegantes para la página de gestión de productos
- * (dentro del dashboard)
- * Pensado para principiantes: reglas claras y comentarios detallados
- * Colores principales:
- *   - Rosado pastel suave:   #fdf2f8   (fondos de encabezado)
- *   - Rosado medio botón:    #e8b7c5   (botón agregar)
- *   - Rosado fuerte hover:   #c4758f   (hover del botón)
- *   - Fondo blanco:          #ffffff
- *   - Gris claro filas:      #f9f9f9   (filas alternadas)
- *   - Gris texto:            #666666
- */
+/* Importar tipografía Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
+/* Contenedor principal */
 .contenedor-gestion {
-    padding: 30px 20px;
-    max-width: 1100px;
-    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.28);
+    margin: 40px auto;
+    max-width: 1200px;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ───────────────────────────────────────────────
-   Encabezado de la sección (título + botón agregar)
-─────────────────────────────────────────────── */
+/* Encabezado */
 .encabezado-seccion {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 35px;
-    flex-wrap: wrap;
-    gap: 20px;
+    margin-bottom: 30px;
 }
 
 .encabezado-seccion h1 {
-    margin: 0;
-    font-size: 2.1rem;
-    font-weight: 400;
-    color: #c4758f;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e91e63;
+    text-shadow: 0 0 12px rgba(233, 30, 99, 0.38);
 }
 
 .boton-agregar {
-    background-color: #e8b7c5;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
+    background: #ff66b2;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 9999px;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1.05rem;
-    transition: all 0.22s ease;
-    border: none;
-    cursor: pointer;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.28);
 }
 
 .boton-agregar:hover {
-    background-color: #c4758f;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(196, 117, 143, 0.20);
+    background: #e91e63;
+    transform: scale(1.05);
+    box-shadow: 0 12px 36px rgba(233, 30, 99, 0.38);
 }
 
-/* ───────────────────────────────────────────────
-   Tabla de productos
-─────────────────────────────────────────────── */
+/* Tabla de productos */
 .tabla-productos {
     width: 100%;
     border-collapse: collapse;
-    background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.18);
 }
 
-.tabla-productos th,
+.tabla-productos thead {
+    background: #ff99cc;
+    color: #fff;
+}
+
+.tabla-productos th, 
 .tabla-productos td {
-    padding: 16px 18px;
-    text-align: left;
-    border-bottom: 1px solid #f0e0e8;
+    padding: 14px 18px;
+    text-align: center;
+    font-size: 0.95rem;
 }
 
-.tabla-productos th {
-    background-color: #fdf2f8;
-    color: #555555;
-    font-weight: 600;
-    font-size: 1.02rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.tabla-productos td {
-    color: #444444;
-    font-size: 0.98rem;
-}
-
-/* Filas alternadas (gris claro y blanco) */
 .tabla-productos tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background: #fdf2fb;
 }
 
-/* Efecto hover en filas */
 .tabla-productos tbody tr:hover {
-    background-color: #fff5f8;
+    background: #ffeaf6;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Texto "Agotado" en rojo suave */
-.sin-stock {
-    color: #e74c3c;
-    font-weight: 500;
-}
-
-/* ───────────────────────────────────────────────
-   Columna de acciones (Editar / Eliminar)
-─────────────────────────────────────────────── */
+/* Acciones */
 .acciones {
-    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 }
 
-.boton-editar,
-.boton-eliminar {
-    display: inline-block;
+.boton-editar, .boton-eliminar {
     padding: 8px 14px;
-    border-radius: 6px;
+    border-radius: 9999px;
+    font-weight: 600;
     text-decoration: none;
-    font-size: 0.92rem;
-    margin-right: 8px;
-    transition: all 0.2s ease;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .boton-editar {
-    background-color: #3498db;
-    color: white;
+    background: #ffb3d9;
+    color: #333;
 }
 
 .boton-editar:hover {
-    background-color: #2980b9;
+    background: #ff66b2;
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.28);
 }
 
 .boton-eliminar {
-    background-color: #e74c3c;
-    color: white;
+    background: #e91e63;
+    color: #fff;
 }
 
 .boton-eliminar:hover {
-    background-color: #c0392b;
+    background: #d63384;
+    transform: scale(1.05);
+    box-shadow: 0 12px 36px rgba(233, 30, 99, 0.38);
 }
 
-/* ───────────────────────────────────────────────
-   Mensaje cuando no hay productos
-─────────────────────────────────────────────── */
+/* Estado sin stock */
+.sin-stock {
+    color: #e91e63;
+    font-weight: 600;
+}
+
+/* Mensaje sin productos */
 .sin-productos {
     text-align: center;
-    padding: 80px 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-}
-
-.sin-productos p {
-    font-size: 1.2rem;
-    color: #777777;
-    margin: 12px 0;
+    padding: 40px;
+    color: #555;
 }
 
 .boton-agregar-grande {
-    background-color: #e8b7c5;
-    color: white;
-    padding: 14px 36px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
     display: inline-block;
     margin-top: 20px;
-    transition: all 0.22s ease;
+    background: #ff66b2;
+    color: #fff;
+    font-weight: 600;
+    padding: 16px 28px;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.28);
 }
 
 .boton-agregar-grande:hover {
-    background-color: #c4758f;
-    transform: translateY(-1px);
+    background: #e91e63;
+    transform: scale(1.05);
+    box-shadow: 0 12px 36px rgba(233, 30, 99, 0.38);
 }
 
-/* ───────────────────────────────────────────────
-   Responsive básico
-─────────────────────────────────────────────── */
+/* Responsivo */
+@media (max-width: 1024px) {
+    .contenedor-gestion {
+        padding: 30px;
+    }
+    .encabezado-seccion h1 {
+        font-size: 1.8rem;
+    }
+    .tabla-productos th, .tabla-productos td {
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 768px) {
     .encabezado-seccion {
         flex-direction: column;
-        align-items: flex-start;
+        gap: 16px;
     }
-    
-    .tabla-productos th,
-    .tabla-productos td {
-        padding: 12px 10px;
-        font-size: 0.92rem;
+    .tabla-productos th, .tabla-productos td {
+        padding: 10px;
+        font-size: 0.85rem;
     }
-    
+}
+
+@media (max-width: 480px) {
+    .contenedor-gestion {
+        margin: 20px;
+        padding: 20px;
+    }
+    .encabezado-seccion h1 {
+        font-size: 1.4rem;
+    }
+    .boton-agregar, .boton-agregar-grande {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
     .acciones {
-        display: flex;
         flex-direction: column;
         gap: 8px;
-    }
-    
-    .boton-editar,
-    .boton-eliminar {
-        margin-right: 0;
-        width: 100%;
-        text-align: center;
     }
 }

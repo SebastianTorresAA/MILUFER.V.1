@@ -1,157 +1,142 @@
-/*
- * Milufer - clientes.css
- * Estilos simples y elegantes para la página de gestión de clientes
- * (dentro del dashboard)
- * Pensado para principiantes: reglas básicas y comentarios claros
- * Colores principales (coherentes con dashboard):
- *   - Rosado pastel suave:   #fdf2f8   (fondos de encabezado)
- *   - Rosado medio botón:    #e8b7c5   (botones de acción)
- *   - Rosado fuerte hover:   #c4758f   (hover de botones)
- *   - Fondo blanco:          #ffffff
- *   - Gris claro filas:      #f9f9f9   (filas alternadas)
- *   - Gris texto:            #666666
- */
+/* Importar tipografía Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
+/* Contenedor principal */
 .contenedor-clientes {
-    padding: 30px 20px;
-    max-width: 1100px;
-    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.28);
+    margin: 40px auto;
+    max-width: 1200px;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ───────────────────────────────────────────────
-   Encabezado de la sección (solo título en esta página)
-─────────────────────────────────────────────── */
+/* Encabezado */
 .encabezado-seccion {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .encabezado-seccion h1 {
-    margin: 0;
-    font-size: 2.1rem;
-    font-weight: 400;
-    color: #c4758f;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e91e63;
+    text-shadow: 0 0 12px rgba(233, 30, 99, 0.38);
 }
 
-/* ───────────────────────────────────────────────
-   Tabla de clientes
-─────────────────────────────────────────────── */
+/* Tabla de clientes */
 .tabla-clientes {
     width: 100%;
     border-collapse: collapse;
-    background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.18);
 }
 
-.tabla-clientes th,
+.tabla-clientes thead {
+    background: #ff99cc;
+    color: #fff;
+}
+
+.tabla-clientes th, 
 .tabla-clientes td {
-    padding: 16px 18px;
-    text-align: left;
-    border-bottom: 1px solid #f0e0e8;
+    padding: 14px 18px;
+    text-align: center;
+    font-size: 0.95rem;
 }
 
-.tabla-clientes th {
-    background-color: #fdf2f8;
-    color: #555555;
-    font-weight: 600;
-    font-size: 1.02rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.tabla-clientes td {
-    color: #444444;
-    font-size: 0.98rem;
-}
-
-/* Filas alternadas (gris claro y blanco) */
 .tabla-clientes tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background: #fdf2fb;
 }
 
-/* Efecto hover en filas */
 .tabla-clientes tbody tr:hover {
-    background-color: #fff5f8;
+    background: #ffeaf6;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ───────────────────────────────────────────────
-   Columna de acciones (Ver / Editar)
-─────────────────────────────────────────────── */
+/* Acciones */
 .acciones {
-    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 }
 
-.boton-ver,
-.boton-editar {
-    display: inline-block;
+.boton-ver, .boton-editar {
     padding: 8px 14px;
-    border-radius: 6px;
+    border-radius: 9999px;
+    font-weight: 600;
     text-decoration: none;
-    font-size: 0.92rem;
-    margin-right: 8px;
-    transition: all 0.2s ease;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .boton-ver {
-    background-color: #17a2b8;
-    color: white;
+    background: #ffb3d9;
+    color: #333;
 }
 
 .boton-ver:hover {
-    background-color: #138496;
+    background: #ff66b2;
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.28);
 }
 
 .boton-editar {
-    background-color: #e8b7c5;
-    color: white;
+    background: #e91e63;
+    color: #fff;
 }
 
 .boton-editar:hover {
-    background-color: #c4758f;
+    background: #d63384;
+    transform: scale(1.05);
+    box-shadow: 0 12px 36px rgba(233, 30, 99, 0.38);
 }
 
-/* ───────────────────────────────────────────────
-   Mensaje cuando no hay clientes
-─────────────────────────────────────────────── */
+/* Estado sin clientes */
 .sin-clientes {
     text-align: center;
-    padding: 80px 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    color: #555;
+    font-size: 1rem;
 }
 
-.sin-clientes p {
-    font-size: 1.2rem;
-    color: #777777;
-    margin: 12px 0;
-}
-
-/* ───────────────────────────────────────────────
-   Responsive básico
-─────────────────────────────────────────────── */
-@media (max-width: 768px) {
+/* Responsivo */
+@media (max-width: 1024px) {
     .contenedor-clientes {
-        padding: 20px 15px;
+        padding: 30px;
     }
-    
-    .tabla-clientes th,
-    .tabla-clientes td {
-        padding: 12px 10px;
-        font-size: 0.92rem;
+    .encabezado-seccion h1 {
+        font-size: 1.8rem;
     }
-    
+    .tabla-clientes th, .tabla-clientes td {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tabla-clientes th, .tabla-clientes td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
     .acciones {
-        display: flex;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor-clientes {
+        margin: 20px;
+        padding: 20px;
+    }
+    .encabezado-seccion h1 {
+        font-size: 1.4rem;
+    }
+    .acciones {
         flex-direction: column;
         gap: 8px;
     }
-    
-    .boton-ver,
-    .boton-editar {
-        margin-right: 0;
-        width: 100%;
-        text-align: center;
+    .boton-ver, .boton-editar {
+        padding: 10px 12px;
+        font-size: 0.9rem;
     }
 }

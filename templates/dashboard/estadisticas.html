@@ -1,167 +1,109 @@
 {% extends 'dashboard/dashboard.html' %}
 {% load static %}
+{% block dashboard_content %}
+{% load humanize %}
+$COP {{ producto.precio|intcomma }}
 
-{% block content %}
 <link rel="stylesheet" href="{% static 'css/dashboard/estadisticas.css' %}">
 
-    <!-- ============================================= -->
-    <!--           ESTADÍSTICAS DE VENTAS             -->
-    <!-- ============================================= -->
-    <div class="contenedor-estadisticas">
+<!-- ================= VENTAS ================= -->
+<section>
+  <h2>📊 Ventas</h2>
+  <div class="grid">
+    <div class="tarjeta">Ventas Totales: ${{ ventas_totales|intcomma }}</div>
+    <div class="tarjeta">Ventas Mes: ${{ ventas_mes|intcomma }}</div>
+    <div class="tarjeta">Ventas Año: ${{ ventas_anio|intcomma }}</div>
+    <div class="tarjeta">Ticket Medio: ${{ ticket_medio|intcomma }}</div>
+    <div class="tarjeta">Total Pedidos: {{ total_pedidos }}</div>
+  </div>
 
-        <!-- Título principal de la página -->
-        <div class="encabezado-estadisticas">
-            <h1>Estadísticas de Ventas</h1>
-            <p>Resumen general del rendimiento de la tienda</p>
-        </div>
+  <h3>🔥 Top Productos Vendidos</h3>
+  <ul>
+    {% for p in productos_top %}
+      <li>{{ p.nombre }} - Vendidos: {{ p.unidades_vendidas }} - Ingresos: ${{ p.ingresos|intcomma }}</li>
+    {% endfor %}
+  </ul>
 
+  <h3>🕒 Pedidos recientes</h3>
+  <ul>
+    {% for pedido in pedidos_recientes %}
+      <li>Pedido #{{ pedido.id }} - {{ pedido.usuario.username }} - ${{ pedido.total }}</li>
+    {% endfor %}
+  </ul>
 
-        <!-- ============================================= -->
-        <!--        TARJETAS CON MÉTRICAS CLAVE           -->
-        <!-- ============================================= -->
-        <div class="grid-metricas">
+  <!-- Gráfico de ventas por mes -->
+  <canvas id="ventasChart"></canvas>
+</section>
 
-            <!-- Tarjeta 1: Ventas totales -->
-            <div class="tarjeta-metrica">
-                <h3>Ventas Totales</h3>
-                <div class="numero-grande">{{ ventas_totales|default:"0.00" }} €</div>
-                <p>en todos los tiempos</p>
-            </div>
+<!-- ================= CLIENTES ================= -->
+<section>
+  <h2>👥 Clientes</h2>
+  <div class="grid">
+    <div class="tarjeta">Total Clientes: {{ total_clientes }}</div>
+    <div class="tarjeta">Clientes Nuevos Mes: {{ clientes_mes }}</div>
+    <div class="tarjeta">Recurrentes: {{ clientes_recurrentes }}</div>
+    <div class="tarjeta">Nuevos: {{ clientes_nuevos }}</div>
+  </div>
 
-            <!-- Tarjeta 2: Pedidos realizados -->
-            <div class="tarjeta-metrica">
-                <h3>Pedidos Totales</h3>
-                <div class="numero-grande">{{ total_pedidos|default:0 }}</div>
-                <p>pedidos completados</p>
-            </div>
+  <!-- Gráfico de clientes -->
+  <canvas id="clientesChart"></canvas>
+</section>
 
-            <!-- Tarjeta 3: Clientes registrados -->
-            <div class="tarjeta-metrica">
-                <h3>Clientes</h3>
-                <div class="numero-grande">{{ total_clientes|default:0 }}</div>
-                <p>usuarios registrados</p>
-            </div>
+<!-- ================= INVENTARIO ================= -->
+<section>
+  <h2>📦 Inventario</h2>
+  <div class="grid">
+    <div class="tarjeta">Productos Totales: {{ productos_totales }}</div>
+    <div class="tarjeta">Activos: {{ productos_activos }}</div>
+    <div class="tarjeta">Inactivos: {{ productos_inactivos }}</div>
+    <div class="tarjeta">Agotados: {{ productos_agotados }}</div>
+    <div class="tarjeta">Bajo Stock: {{ productos_bajo_stock }}</div>
+    <div class="tarjeta">Valor Inventario: ${{ valor_total_inventario|intcomma }}</div>
+  </div>
 
-            <!-- Tarjeta 4: Ticket medio -->
-            <div class="tarjeta-metrica">
-                <h3>Ticket Medio</h3>
-                <div class="numero-grande">{{ ticket_medio|default:"0.00" }} €</div>
-                <p>promedio por pedido</p>
-            </div>
+  <!-- Gráfico de stock por categoría -->
+  <canvas id="stockChart"></canvas>
+</section>
 
-        </div>
+<!-- ================= ALERTAS ================= -->
+<section>
+  <h2>⚠️ Alertas</h2>
+  <div class="grid">
+    <div class="tarjeta">Productos sin ventas: {{ sin_ventas.count }}</div>
+    <div class="tarjeta">Pedidos pendientes: {{ pedidos_pendientes.count }}</div>
+  </div>
+</section>
 
-
-        <!-- ============================================= -->
-        <!--           GRÁFICO DE VENTAS (placeholder)    -->
-        <!-- ============================================= -->
-        <div class="seccion-grafico">
-            <h2>Ventas por Mes</h2>
-            
-            <!-- Canvas donde se renderizará el gráfico con Chart.js -->
-            <div class="canvas-contenedor">
-                <canvas id="graficoVentas" height="120"></canvas>
-            </div>
-            
-        </div>
-
-
-        <!-- ============================================= -->
-        <!--        PRODUCTOS MÁS VENDIDOS                -->
-        <!-- ============================================= -->
-        <div class="seccion-productos-vendidos">
-            <h2>Productos Más Vendidos</h2>
-
-            {% if productos_top %}
-                <table class="tabla-top-productos">
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Unidades Vendidas</th>
-                            <th>Ingresos Generados</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in productos_top %}
-                            <tr>
-                                <td>{{ item.nombre }}</td>
-                                <td>{{ item.unidades_vendidas }}</td>
-                                <td>{{ item.ingresos|floatformat:2 }} €</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p class="sin-datos">Aún no hay suficientes ventas para mostrar ranking.</p>
-            {% endif %}
-        </div>
-
-
-        <!-- ============================================= -->
-        <!--           PEDIDOS RECIENTES                  -->
-        <!-- ============================================= -->
-        <div class="seccion-pedidos-recientes">
-            <h2>Últimos Pedidos</h2>
-
-            {% if pedidos_recientes %}
-                <table class="tabla-pedidos-recientes">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Cliente</th>
-                            <th>Fecha</th>
-                            <th>Total</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for pedido in pedidos_recientes %}
-                            <tr>
-                                <td>#{{ pedido.id }}</td>
-                                <td>{{ pedido.usuario.username|default:pedido.usuario.email }}</td>
-                                <td>{{ pedido.fecha_creacion|date:"d/m/Y H:i" }}</td>
-                                <td>{{ pedido.total }} €</td>
-                                <td>
-                                    <span class="estado-{{ pedido.estado|lower }}">
-                                        {{ pedido.get_estado_display|default:pedido.estado }}
-                                    </span>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p class="sin-datos">No hay pedidos recientes para mostrar.</p>
-            {% endif %}
-        </div>
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- ================= CHART.JS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const ctx = document.getElementById('graficoVentas').getContext('2d');
-    const graficoVentas = new Chart(ctx, {
-        type: 'bar', 
-        data: {
-            labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
-            datasets: [{
-                label: 'Ventas (COP)',
-                data: [1],
-                backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
+  // Gráfico de ventas
+  const ventasCtx = document.getElementById('ventasChart').getContext('2d');
+  new Chart(ventasCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Totales', 'Mes', 'Año'],
+      datasets: [{
+        label: 'Ventas ($)',
+        data: [{{ ventas_totales }}, {{ ventas_mes }}, {{ ventas_anio }}],
+        backgroundColor: ['#4CAF50','#2196F3','#FFC107']
+      }]
+    }
+  });
 
+  // Gráfico de clientes
+  const clientesCtx = document.getElementById('clientesChart').getContext('2d');
+  new Chart(clientesCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Recurrentes', 'Nuevos'],
+      datasets: [{
+        data: [{{ clientes_recurrentes }}, {{ clientes_nuevos }}],
+        backgroundColor: ['#FF5722','#9C27B0']
+      }]
+    }
+  });
+
+</script>
 
 {% endblock %}
