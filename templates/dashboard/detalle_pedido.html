@@ -1,0 +1,53 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard/detalle_pedido.css' %}">
+{% endblock %}
+
+{% block dashboard_content %}
+
+<h1>Detalle del Pedido #{{ pedido.id }}</h1>
+
+<h2>Información del Cliente</h2>
+<p><strong>Nombre:</strong> {{ cliente.get_full_name }}</p>
+<p><strong>Usuario:</strong> {{ cliente.username }}</p>
+<p><strong>Email:</strong> {{ cliente.email }}</p>
+
+{% if direccion %}
+<p><strong>Dirección:</strong> {{ direccion.direccion }}</p>
+<p><strong>Ciudad:</strong> {{ direccion.ciudad }}</p>
+{% if direccion.referencia %}<p><strong>Referencia:</strong> {{ direccion.referencia }}</p>{% endif %}
+{% else %}
+<p><strong>Dirección:</strong> No registrada</p>
+{% endif %}
+
+<h2>Productos del Pedido</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in pedido.items.all %}  {# Ajusta según tu relación Pedido -> PedidoProducto #}
+        <tr>
+            <td>{{ item.producto.nombre }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>${{ item.precio }}</td>
+            <td>${{ item.total }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No hay productos en este pedido.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'dashboard:pedidos' %}" class="btn btn-secondary">Volver a pedidos</a>
+
+{% endblock %}
