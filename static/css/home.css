@@ -148,26 +148,35 @@ nav a:focus {
 footer {
   background: var(--pink-medium);
   color: white;
-  padding: 5rem 0 3.5rem;
-  margin-top: 7rem;
+  padding: 0.5rem;
+  margin-top: 1.5rem;
   text-align: center;
   box-shadow: 0 -8px 35px rgba(255,102,178,0.25);
 }
 
 footer p {
-  margin: 1rem 0;
+  margin: 1.5rem 0 ;
   font-size: 1.1rem;
 }
 
 footer .copyright {
-  margin-top: 2.5rem;
-  font-size: 0.95rem;
+  margin-top: 0.5rem;   
   opacity: 0.95;
+}
+
+.copyright {
+  font-family: Arial 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    text-align: center;
+    padding: 10px;
 }
 
 /* Redes sociales – versión que te gustaba más (blancos brillantes, fill en hover) */
 .redes-sociales {
-  margin: 2.2rem 0 2.8rem;
+  margin: 1.5rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

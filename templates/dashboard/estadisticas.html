@@ -2,7 +2,7 @@
 {% load static %}
 {% block dashboard_content %}
 {% load humanize %}
-$COP {{ producto.precio|intcomma }}
+{{ producto.precio|intcomma }}
 
 <link rel="stylesheet" href="{% static 'css/dashboard/estadisticas.css' %}">
 
