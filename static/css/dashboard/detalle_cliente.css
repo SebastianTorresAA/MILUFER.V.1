@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 /* Contenedor principal */
-.contenedor-detalle-cliente {
-    max-width: 700px;
+.detalle-cliente-contenedor {
+    max-width: 800px;
     margin: 40px auto;
     background: #fff;
     border-radius: 16px;
@@ -14,7 +14,7 @@
 }
 
 /* Encabezado */
-.contenedor-detalle-cliente h1 {
+.detalle-cliente-contenedor h1 {
     font-size: 2rem;
     font-weight: 700;
     color: #e91e63;
@@ -23,29 +23,62 @@
     text-align: center;
 }
 
-/* Información del cliente */
-.contenedor-detalle-cliente p {
+/* Información básica */
+.info-basica p {
     font-size: 1rem;
     color: #444;
     margin: 8px 0;
 }
 
-.contenedor-detalle-cliente p span {
-    font-weight: 600;
+.info-basica strong {
     color: #d63384;
 }
 
-/* Bloque de dirección */
-.contenedor-detalle-cliente .direccion {
-    margin-top: 20px;
-    padding: 16px;
+/* Bloque de direcciones */
+.info-direcciones {
+    margin-top: 30px;
+}
+
+.info-direcciones h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #e91e63;
+    margin-bottom: 16px;
+}
+
+.tarjeta-direccion {
     background: #fdf2fb;
     border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(233, 30, 99, 0.18);
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tarjeta-direccion:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(233, 30, 99, 0.28);
+}
+
+.tarjeta-direccion p {
+    margin: 6px 0;
     color: #555;
 }
 
+.etiqueta-principal {
+    display: inline-block;
+    margin-top: 8px;
+    background: #ff66b2;
+    color: #fff;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.28);
+}
+
 /* Botón volver */
-.contenedor-detalle-cliente a {
+.boton-volver {
     display: inline-block;
     margin-top: 30px;
     background: #ff66b2;
@@ -58,7 +91,7 @@
     box-shadow: 0 6px 24px rgba(233, 30, 99, 0.28);
 }
 
-.contenedor-detalle-cliente a:hover {
+.boton-volver:hover {
     background: #e91e63;
     transform: scale(1.05);
     box-shadow: 0 12px 36px rgba(233, 30, 99, 0.38);
@@ -66,20 +99,23 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .contenedor-detalle-cliente {
+    .detalle-cliente-contenedor {
         padding: 24px;
     }
-    .contenedor-detalle-cliente h1 {
+    .detalle-cliente-contenedor h1 {
         font-size: 1.6rem;
+    }
+    .info-direcciones h2 {
+        font-size: 1.2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .contenedor-detalle-cliente {
+    .detalle-cliente-contenedor {
         margin: 20px;
         padding: 20px;
     }
-    .contenedor-detalle-cliente h1 {
+    .detalle-cliente-contenedor h1 {
         font-size: 1.4rem;
     }
 }

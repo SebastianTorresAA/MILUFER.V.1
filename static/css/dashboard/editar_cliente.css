@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 /* Contenedor principal */
-.contenedor-editar-cliente {
+.editar-cliente-contenedor {
     max-width: 700px;
     margin: 40px auto;
     background: #fff;
@@ -14,7 +14,7 @@
 }
 
 /* Encabezado */
-.contenedor-editar-cliente h1 {
+.editar-cliente-contenedor h1 {
     font-size: 2rem;
     font-weight: 700;
     color: #e91e63;
@@ -24,28 +24,28 @@
 }
 
 /* Formulario */
-.contenedor-editar-cliente form {
+.formulario-editar-cliente {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
 /* Campos generados por Django (as_p) */
-.contenedor-editar-cliente form p {
+.formulario-editar-cliente p {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin: 0;
 }
 
-.contenedor-editar-cliente form label {
+.formulario-editar-cliente label {
     font-weight: 600;
     color: #e91e63;
 }
 
-.contenedor-editar-cliente form input,
-.contenedor-editar-cliente form select,
-.contenedor-editar-cliente form textarea {
+.formulario-editar-cliente input,
+.formulario-editar-cliente select,
+.formulario-editar-cliente textarea {
     padding: 12px 16px;
     border: 2px solid #ffb3d9;
     border-radius: 9999px;
@@ -53,23 +53,29 @@
     transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.contenedor-editar-cliente form textarea {
+.formulario-editar-cliente textarea {
     border-radius: 16px;
     resize: vertical;
 }
 
-.contenedor-editar-cliente form input:focus,
-.contenedor-editar-cliente form select:focus,
-.contenedor-editar-cliente form textarea:focus {
+.formulario-editar-cliente input:focus,
+.formulario-editar-cliente select:focus,
+.formulario-editar-cliente textarea:focus {
     outline: none;
     border-color: #ff66b2;
     box-shadow: 0 0 12px rgba(233, 30, 99, 0.38);
 }
 
 /* Botones */
-.contenedor-editar-cliente button,
-.contenedor-editar-cliente a {
-    display: inline-block;
+.botones-formulario {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.boton-guardar,
+.boton-cancelar {
     padding: 12px 20px;
     border-radius: 9999px;
     font-weight: 600;
@@ -79,28 +85,27 @@
 }
 
 /* Botón Guardar */
-.contenedor-editar-cliente button {
+.boton-guardar {
     background: #ff66b2;
     color: #fff;
     border: none;
     box-shadow: 0 6px 24px rgba(233, 30, 99, 0.28);
 }
 
-.contenedor-editar-cliente button:hover {
+.boton-guardar:hover {
     background: #e91e63;
     transform: scale(1.05);
     box-shadow: 0 12px 36px rgba(233, 30, 99, 0.38);
 }
 
 /* Botón Cancelar */
-.contenedor-editar-cliente a {
+.boton-cancelar {
     background: #d63384;
     color: #fff;
-    margin-left: 12px;
     box-shadow: 0 6px 24px rgba(214, 51, 132, 0.28);
 }
 
-.contenedor-editar-cliente a:hover {
+.boton-cancelar:hover {
     background: #a61e4d;
     transform: scale(1.05);
     box-shadow: 0 12px 36px rgba(214, 51, 132, 0.38);
@@ -108,29 +113,29 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .contenedor-editar-cliente {
+    .editar-cliente-contenedor {
         padding: 24px;
     }
-    .contenedor-editar-cliente h1 {
+    .editar-cliente-contenedor h1 {
         font-size: 1.6rem;
     }
-    .contenedor-editar-cliente button,
-    .contenedor-editar-cliente a {
+    .botones-formulario {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .boton-guardar,
+    .boton-cancelar {
         width: 100%;
         text-align: center;
-        margin: 0;
-    }
-    .contenedor-editar-cliente form {
-        gap: 16px;
     }
 }
 
 @media (max-width: 480px) {
-    .contenedor-editar-cliente {
+    .editar-cliente-contenedor {
         margin: 20px;
         padding: 20px;
     }
-    .contenedor-editar-cliente h1 {
+    .editar-cliente-contenedor h1 {
         font-size: 1.4rem;
     }
 }
