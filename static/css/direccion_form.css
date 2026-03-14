@@ -1,94 +1,134 @@
-/*
- * Milufer - direccion.css
- * Estilos para el formulario de agregar dirección
- * Estilo: limpio, elegante, centrado y femenino
- * Colores coherentes con la tienda (rosado pastel)
- */
+/* Importar tipografía Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-.contenedor-direccion {
-  max-width: 520px;
-  margin: 60px auto;
-  padding: 40px 32px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  text-align: center;
+/* Contenedor principal */
+.contenedor-perfil {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.28);
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Título */
-.contenedor-direccion h1 {
-  font-size: 2.1rem;
-  font-weight: 500;
-  color: #c4758f;           /* rosado intenso */
-  margin: 0 0 32px 0;
-  letter-spacing: -0.4px;
+/* Encabezado */
+.contenedor-perfil h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e91e63;
+    text-shadow: 0 0 12px rgba(233, 30, 99, 0.38);
+    margin-bottom: 10px;
 }
 
-/* Cada campo del formulario */
+.contenedor-perfil p {
+    color: #d63384;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+/* Formulario */
+.formulario-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Campos */
 .campo {
-  margin-bottom: 28px;
-  text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .campo label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: #555;
-  font-size: 1.05rem;
+    font-weight: 600;
+    color: #e91e63;
 }
 
-.campo input {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid #e0d8de;
-  border-radius: 10px;
-  font-size: 1rem;
-  background: #fdfdfd;
-  transition: all 0.25s ease;
+.campo input[type="text"],
+.campo input[type="checkbox"] {
+    padding: 12px 16px;
+    border: 2px solid #ffb3d9;
+    border-radius: 9999px;
+    font-size: 1rem;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Checkbox más compacto */
+.campo input[type="checkbox"] {
+    width: auto;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Focus */
 .campo input:focus {
-  outline: none;
-  border-color: #e8b7c5;
-  box-shadow: 0 0 0 3px rgba(232, 183, 197, 0.15);
+    outline: none;
+    border-color: #ff66b2;
+    box-shadow: 0 0 12px rgba(233, 30, 99, 0.38);
 }
 
-/* Botón Guardar */
-.boton-guardar {
-  background: #e8b7c5;
-  color: white;
-  border: none;
-  padding: 14px 40px;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.28s ease;
-  margin-top: 16px;
-  width: 100%;
-  max-width: 240px;
+/* Botón guardar */
+.boton-registro {
+    background: #ff66b2;
+    color: #fff;
+    font-weight: 600;
+    padding: 14px;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.28);
 }
 
-.boton-guardar:hover {
-  background: #c4758f;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(196, 117, 143, 0.25);
+.boton-registro:hover {
+    background: #e91e63;
+    transform: scale(1.05);
+    box-shadow: 0 12px 36px rgba(233, 30, 99, 0.38);
 }
 
-/* Responsive - todo sigue centrado y bonito */
-@media (max-width: 600px) {
-  .contenedor-direccion {
-    margin: 40px 16px;
-    padding: 32px 24px;
-  }
+/* Enlace volver */
+.opcion-login {
+    margin-top: 30px;
+    text-align: center;
+}
 
-  .contenedor-direccion h1 {
-    font-size: 1.9rem;
-  }
+.enlace-login {
+    color: #ff66b2;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  .boton-guardar {
-    padding: 14px 32px;
-    font-size: 1.05rem;
-  }
+.enlace-login:hover {
+    color: #e91e63;
+    text-shadow: 0 0 8px rgba(233, 30, 99, 0.38);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenedor-perfil {
+        padding: 24px;
+    }
+    .contenedor-perfil h1 {
+        font-size: 1.6rem;
+    }
+    .boton-registro {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor-perfil {
+        margin: 20px;
+        padding: 20px;
+    }
+    .contenedor-perfil h1 {
+        font-size: 1.4rem;
+    }
+    .contenedor-perfil p {
+        font-size: 0.9rem;
+    }
 }

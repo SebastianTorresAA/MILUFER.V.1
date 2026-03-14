@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block content %}
+{% load humanize %}
+
 
 <link rel="stylesheet" href="{% static 'css/carrito.css' %}">
 
@@ -33,13 +35,13 @@
                         <td>{{ item.producto.nombre }}</td>
                         
                         <!-- Precio unitario -->
-                        <td>{{ item.producto.precio }} COP</td>
+                        <td>{{ item.producto.precio|intcomma }} COP</td>
                         
                         <!-- Cantidad -->
                         <td>{{ item.cantidad }}</td>
                         
                         <!-- Subtotal = precio × cantidad -->
-                        <td>{{ item.subtotal }} COP</td>
+                        <td>{{ item.subtotal|intcomma }} COP</td>
 
                         <!-- Acciones -->
                         <td>
@@ -63,7 +65,7 @@
         <!-- Total general del carrito -->
         <div class="total-carrito">
             <h3>Total a pagar:</h3>
-            <p class="total-monto">{{ total_carrito }} COP</p>
+            <p class="total-monto">{{ total_carrito|intcomma }} COP</p>
         </div>
 
         <!-- Botón para finalizar la compra -->

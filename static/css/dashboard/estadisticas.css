@@ -1,249 +1,114 @@
-/*
- * Milufer - estadisticas.css
- * Estilos simples y elegantes para la página de estadísticas del dashboard
- * Pensado para principiantes: reglas básicas y comentarios claros
- * Colores principales:
- *   - Rosado pastel suave:   #fdf2f8   (fondos, acentos)
- *   - Rosado medio botón:    #e8b7c5   (botones)
- *   - Rosado fuerte hover:   #c4758f   (hover)
- *   - Fondo blanco:          #ffffff   (tarjetas y contenedores)
- *   - Gris claro:            #f9f9f9   (fondos alternos o secciones)
- *   - Gris texto:            #666666
- */
+/* Importar tipografía Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-.contenedor-estadisticas {
-    padding: 30px 20px;
+/* Contenedor general de secciones */
+section {
+    margin: 40px auto;
     max-width: 1200px;
-    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.18);
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ───────────────────────────────────────────────
-   Encabezado principal de estadísticas
-─────────────────────────────────────────────── */
-.encabezado-estadisticas {
-    margin-bottom: 40px;
-    text-align: center;
+/* Encabezados */
+section h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e91e63;
+    text-shadow: 0 0 12px rgba(233, 30, 99, 0.38);
+    margin-bottom: 20px;
 }
 
-.encabezado-estadisticas h1 {
-    margin: 0 0 8px 0;
-    font-size: 2.2rem;
-    font-weight: 400;
-    color: #c4758f;
-}
-
-.encabezado-estadisticas p {
-    margin: 0;
-    color: #777777;
-    font-size: 1.05rem;
-}
-
-/* ───────────────────────────────────────────────
-   Grid de tarjetas de métricas (resumen)
-─────────────────────────────────────────────── */
-.grid-metricas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-    margin-bottom: 50px;
-}
-
-.tarjeta-metrica {
-    background-color: #ffffff;
-    padding: 24px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.tarjeta-metrica:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
-}
-
-.tarjeta-metrica h3 {
-    margin: 0 0 12px 0;
-    font-size: 1.15rem;
-    color: #666666;
-    font-weight: 500;
-}
-
-.numero-grande {
-    font-size: 2.6rem;
+section h3 {
+    font-size: 1.3rem;
     font-weight: 600;
-    color: #c4758f;
-    margin: 8px 0;
+    color: #d63384;
+    margin: 20px 0 10px;
 }
 
-.tarjeta-metrica p {
-    margin: 0;
-    color: #888888;
+/* Grids */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Tarjetas */
+.tarjeta {
+    background: #fdf2fb;
+    border-radius: 16px;
+    padding: 20px;
+    font-weight: 600;
+    color: #444;
+    text-align: center;
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.18);
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tarjeta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 36px rgba(233, 30, 99, 0.28);
+}
+
+/* Listas */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0e0e8;
+    color: #555;
     font-size: 0.95rem;
 }
 
-/* ───────────────────────────────────────────────
-   Sección del gráfico
-─────────────────────────────────────────────── */
-.seccion-grafico {
-    background-color: #ffffff;
-    padding: 28px;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    margin-bottom: 50px;
-}
-
-.seccion-grafico h2 {
-    margin: 0 0 20px 0;
-    font-size: 1.5rem;
-    color: #555555;
-    font-weight: 500;
-}
-
-.canvas-contenedor {
-    position: relative;
-    height: 320px;
-    width: 100%;
-}
-
+/* Canvas gráficos */
 canvas {
-    max-height: 320px !important;
-    width: 100% !important;
+    margin-top: 20px;
+    max-width: 100%;
 }
 
-.nota-grafico {
-    text-align: center;
-    color: #999999;
-    font-size: 0.9rem;
-    margin-top: 12px;
-    font-style: italic;
-}
-
-/* ───────────────────────────────────────────────
-   Sección de productos más vendidos
-─────────────────────────────────────────────── */
-.seccion-productos-vendidos {
-    background-color: #ffffff;
-    padding: 28px;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    margin-bottom: 50px;
-}
-
-.seccion-productos-vendidos h2 {
-    margin: 0 0 20px 0;
-    font-size: 1.5rem;
-    color: #555555;
-    font-weight: 500;
-}
-
-.tabla-top-productos {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.tabla-top-productos th,
-.tabla-top-productos td {
-    padding: 14px 16px;
-    text-align: left;
-    border-bottom: 1px solid #f0e0e8;
-}
-
-.tabla-top-productos th {
-    background-color: #fdf2f8;
-    color: #555555;
-    font-weight: 600;
-}
-
-.tabla-top-productos td {
-    color: #444444;
-}
-
-/* ───────────────────────────────────────────────
-   Sección de pedidos recientes
-─────────────────────────────────────────────── */
-.seccion-pedidos-recientes {
-    background-color: #ffffff;
-    padding: 28px;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-}
-
-.seccion-pedidos-recientes h2 {
-    margin: 0 0 20px 0;
-    font-size: 1.5rem;
-    color: #555555;
-    font-weight: 500;
-}
-
-.tabla-pedidos-recientes {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.tabla-pedidos-recientes th,
-.tabla-pedidos-recientes td {
-    padding: 14px 16px;
-    text-align: left;
-    border-bottom: 1px solid #f0e0e8;
-}
-
-.tabla-pedidos-recientes th {
-    background-color: #fdf2f8;
-    color: #555555;
-    font-weight: 600;
-}
-
-.tabla-pedidos-recientes td {
-    color: #444444;
-}
-
-/* Estados en pedidos recientes */
-.estado-pendiente { color: #e67e22; font-weight: 500; }
-.estado-enviado   { color: #27ae60; font-weight: 500; }
-.estado-entregado { color: #2980b9; font-weight: 500; }
-.estado-cancelado { color: #e74c3c; font-weight: 500; }
-
-/* Mensajes cuando no hay datos */
-.sin-datos {
-    text-align: center;
-    padding: 60px 20px;
-    color: #888888;
-    font-size: 1.1rem;
-    font-style: italic;
-}
-
-/* ───────────────────────────────────────────────
-   Responsive básico
-─────────────────────────────────────────────── */
-@media (max-width: 992px) {
-    .grid-metricas {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+/* Responsive */
+@media (max-width: 1024px) {
+    section {
+        padding: 24px;
+    }
+    section h2 {
+        font-size: 1.6rem;
+    }
+    .tarjeta {
+        font-size: 0.95rem;
     }
 }
 
 @media (max-width: 768px) {
-    .contenedor-estadisticas {
-        padding: 20px 15px;
+    .grid {
+        grid-template-columns: 1fr;
     }
-    
-    .canvas-contenedor {
-        height: 280px;
+    section h2 {
+        font-size: 1.4rem;
     }
-    
-    .seccion-grafico,
-    .seccion-productos-vendidos,
-    .seccion-pedidos-recientes {
-        padding: 20px;
+    section h3 {
+        font-size: 1.1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .grid-metricas {
-        grid-template-columns: 1fr;
+    section {
+        margin: 20px;
+        padding: 20px;
     }
-    
-    .tarjeta-metrica .numero-grande {
-        font-size: 2.2rem;
+    section h2 {
+        font-size: 1.2rem;
+    }
+    .tarjeta {
+        padding: 16px;
+        font-size: 0.9rem;
     }
 }
