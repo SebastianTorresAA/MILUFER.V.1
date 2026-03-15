@@ -99,8 +99,7 @@
 }
 
 /* Sección total */
-.total-carrito {
-  text-align: right;
+.total-carrito {  
   margin-bottom: 40px;
   padding: 28px;
   background: rgba(255, 255, 255, 0.85);
@@ -114,13 +113,14 @@
   margin: 0 0 12px 0;
   font-size: 1.45rem;
   color: #444;
-  font-weight: 600;
+  font-weight: 600;  
 }
 
 .total-monto {
   font-size: 2.4rem;
   font-weight: 800;
   color: var(--pink-deep);
+  text-align: left;
 }
 
 /* Botones de acción principales */

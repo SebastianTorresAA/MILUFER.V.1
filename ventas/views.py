@@ -139,28 +139,36 @@ def ver_carrito(request):
 # ────────────────────────────────────────────────
 @login_required
 def finalizar_compra(request):
+    # Obtener el carrito desde la sesión del usuario
     carrito = request.session.get("carrito", {})
 
+    # Si el carrito está vacío, avisar y redirigir
     if not carrito:
         messages.info(request, "Tu carrito está vacío.")
         return redirect("ventas:carrito")
 
+    # Variables para acumular productos y total
     items = []
     total = 0
     productos_no_disponibles = []
 
-    # Validar productos antes de crear el pedido
+    # Validar cada producto del carrito
     for pid_str, datos in carrito.items():
         try:
             producto = Producto.objects.get(id=int(pid_str), activo=True)
             cantidad = min(datos["cantidad"], producto.stock)
 
+            # Si no hay suficiente stock, avisar
             if cantidad < datos["cantidad"]:
-                productos_no_disponibles.append(f"{producto.nombre} (solo {producto.stock} disponibles)")
+                productos_no_disponibles.append(
+                    f"{producto.nombre} (solo {producto.stock} disponibles)"
+                )
 
+            # Calcular subtotal y acumular
             subtotal = producto.precio * cantidad
             total += subtotal
 
+            # Guardar el producto válido en la lista
             items.append({
                 "producto": producto,
                 "cantidad": cantidad,
@@ -170,15 +178,17 @@ def finalizar_compra(request):
         except Producto.DoesNotExist:
             productos_no_disponibles.append(f"Producto ID {pid_str} (no encontrado)")
 
+    # Si hay productos no disponibles, mostrar error y volver al carrito
     if productos_no_disponibles:
         messages.error(request, f"No se puede completar la compra: {', '.join(productos_no_disponibles)}")
         return redirect("ventas:carrito")
 
+    # Si no hay productos válidos, mostrar error
     if not items:
         messages.error(request, "No hay productos válidos para comprar.")
         return redirect("ventas:carrito")
 
-    # Crear el pedido
+    # Crear el pedido con estado pendiente y fecha de expiración
     expiracion = timezone.now() + timedelta(hours=1)
     pedido = Pedido.objects.create(
         usuario=request.user,
@@ -187,20 +197,24 @@ def finalizar_compra(request):
         expiracion=expiracion,
     )
 
-    # Agregar productos al pedido
+    # Agregar los productos al pedido
     for item in items:
         pedido.items.create(
             producto=item["producto"],
             cantidad=item["cantidad"],
-            precio=item["precio"],  # Solo este campo corresponde al modelo
+            precio=item["precio"],
         )
 
-
-    # Preparar mensaje de WhatsApp
+    # Preparar mensaje de WhatsApp con el resumen
     lineas = [f"{item['producto'].nombre} ×{item['cantidad']}" for item in items]
     resumen = " - ".join(lineas)
     mensaje = f"Hola, quiero finalizar mi compra (pedido #{pedido.id}): {resumen}. Total: ${total:,.0f}"
     texto_codificado = quote(mensaje)
     url_whatsapp = f"https://wa.me/573219414687?text={texto_codificado}"
 
+    # 🔴 Vaciar el carrito de la sesión después de finalizar la compra
+    if "carrito" in request.session:
+        del request.session["carrito"]
+
+    # Redirigir al enlace de WhatsApp
     return redirect(url_whatsapp)
