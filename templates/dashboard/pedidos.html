@@ -59,17 +59,19 @@
                                 Ver
                             </a>
 
-                            <!-- Confirmar -->
-                            <a href="{% url 'dashboard:admin_confirmar_pedido' pedido.id %}" 
-                               class="boton-confirmar">
-                                Confirmar
-                            </a>
+                            {% if pedido.estado == "pendiente" %}
+                                <!-- Confirmar -->
+                                <a href="{% url 'dashboard:admin_confirmar_pedido' pedido.id %}" 
+                                   class="boton-confirmar">
+                                    Confirmar
+                                </a>
 
-                            <!-- Cancelar -->
-                            <a href="{% url 'dashboard:admin_cancelar_pedido' pedido.id %}" 
-                               class="boton-cancelar">
-                                Cancelar
-                            </a>
+                                <!-- Cancelar -->
+                                <a href="{% url 'dashboard:admin_cancelar_pedido' pedido.id %}" 
+                                   class="boton-cancelar">
+                                    Cancelar
+                                </a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
