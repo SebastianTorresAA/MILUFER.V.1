@@ -39,6 +39,7 @@
         </div>
     </div>
 
+    {% if not request.user.is_superuser %}
     <!-- Sección de direcciones -->
     <div class="seccion-direcciones">
         <div class="encabezado-seccion">
@@ -75,6 +76,7 @@
             </div>
         {% endif %}
     </div>
+    {% endif %}
 
 </div>
 

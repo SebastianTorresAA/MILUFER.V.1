@@ -28,6 +28,7 @@
 /* Tabla de clientes */
 .tabla-clientes {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     border-radius: 16px;
     overflow: hidden;
@@ -44,6 +45,7 @@
     padding: 14px 18px;
     text-align: center;
     font-size: 0.95rem;
+    overflow-wrap: anywhere;
 }
 
 .tabla-clientes tbody tr:nth-child(even) {
@@ -114,29 +116,103 @@
 }
 
 @media (max-width: 768px) {
-    .tabla-clientes th, .tabla-clientes td {
-        padding: 10px;
-        font-size: 0.85rem;
+    .contenedor-clientes {
+        margin: 24px auto;
+        width: calc(100% - 16px);
+        padding: 18px 12px;
     }
+
+    .tabla-clientes,
+    .tabla-clientes thead,
+    .tabla-clientes tbody,
+    .tabla-clientes tr,
+    .tabla-clientes th,
+    .tabla-clientes td {
+        display: block;
+        width: 100%;
+    }
+
+    .tabla-clientes thead {
+        display: none;
+    }
+
+    .tabla-clientes {
+        box-shadow: none;
+    }
+
+    .tabla-clientes tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .tabla-clientes tbody tr {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 6px 24px rgba(233, 30, 99, 0.18);
+        overflow: hidden;
+    }
+
+    .tabla-clientes td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        font-size: 0.88rem;
+        text-align: right;
+        border-bottom: 1px solid #f8dce8;
+    }
+
+    .tabla-clientes td:last-child {
+        border-bottom: none;
+    }
+
+    .tabla-clientes td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #e91e63;
+        text-align: left;
+        flex: 0 0 42%;
+    }
+
+    .tabla-clientes td.acciones {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .tabla-clientes td.acciones::before {
+        align-self: flex-start;
+        margin-bottom: 4px;
+    }
+
     .acciones {
-        gap: 8px;
+        gap: 10px;
+    }
+
+    .boton-ver, .boton-editar {
+        width: 100%;
+        text-align: center;
     }
 }
 
 @media (max-width: 480px) {
-    .contenedor-clientes {
-        margin: 20px;
-        padding: 20px;
-    }
     .encabezado-seccion h1 {
         font-size: 1.4rem;
     }
-    .acciones {
-        flex-direction: column;
-        gap: 8px;
+
+    .tabla-clientes td {
+        padding: 11px 12px;
+        font-size: 0.82rem;
     }
+
+    .tabla-clientes td::before {
+        flex-basis: 40%;
+        font-size: 0.8rem;
+    }
+
     .boton-ver, .boton-editar {
         padding: 10px 12px;
-        font-size: 0.9rem;
+        font-size: 0.84rem;
     }
 }

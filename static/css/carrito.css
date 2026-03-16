@@ -56,6 +56,7 @@
 /* Tabla del carrito */
 .tabla-carrito {
   width: 100%;
+  table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0 12px;
   margin-bottom: 48px;
@@ -82,6 +83,8 @@
   color: #333;
   font-size: 1rem;
   vertical-align: middle;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* Filas con hover y efecto levitación */
@@ -222,12 +225,49 @@
 @media (max-width: 768px) {
   .contenedor-carrito {
     margin: 40px auto;
+    width: 96%;
+    padding: 0;
+  }
+
+  .tabla-carrito th:nth-child(1),
+  .tabla-carrito td:nth-child(1) {
+    width: 26%;
+  }
+
+  .tabla-carrito th:nth-child(2),
+  .tabla-carrito td:nth-child(2) {
+    width: 18%;
+  }
+
+  .tabla-carrito th:nth-child(3),
+  .tabla-carrito td:nth-child(3) {
+    width: 12%;
+  }
+
+  .tabla-carrito th:nth-child(4),
+  .tabla-carrito td:nth-child(4) {
+    width: 18%;
+  }
+
+  .tabla-carrito th:nth-child(5),
+  .tabla-carrito td:nth-child(5) {
+    width: 26%;
   }
   
   .tabla-carrito th,
   .tabla-carrito td {
-    padding: 14px 10px;
-    font-size: 0.95rem;
+    padding: 12px 6px;
+    font-size: 0.83rem;
+  }
+
+  .tabla-carrito th {
+    font-size: 0.74rem;
+    letter-spacing: 0.3px;
+  }
+
+  .tabla-carrito td:last-child {
+    padding-left: 4px;
+    padding-right: 4px;
   }
   
   .total-carrito {
@@ -248,15 +288,56 @@
   .boton-eliminar-uno,
   .boton-eliminar-todo {
     display: block;
-    margin: 8px auto;
-    width: 80%;
+    margin: 6px 0;
+    width: 100%;
+    padding: 8px 6px;
+    font-size: 0.8rem;
     text-align: center;
+  }
+
+  .boton-eliminar-uno + .boton-eliminar-todo {
+    margin-top: 12px;
   }
 }
 
 @media (max-width: 480px) {
+  .contenedor-carrito {
+    width: calc(100% - 12px);
+  }
+
   .contenedor-carrito h1 {
     font-size: 2rem;
+  }
+
+  .contenedor-carrito > p {
+    font-size: 0.96rem;
+    margin-bottom: 30px;
+  }
+
+  .tabla-carrito {
+    border-spacing: 0 8px;
+  }
+
+  .tabla-carrito th,
+  .tabla-carrito td {
+    padding: 10px 4px;
+    font-size: 0.74rem;
+  }
+
+  .tabla-carrito th {
+    font-size: 0.64rem;
+    letter-spacing: 0.2px;
+  }
+
+  .boton-eliminar-uno,
+  .boton-eliminar-todo {
+    padding: 7px 4px;
+    font-size: 0.72rem;
+    border-radius: 8px;
+  }
+
+  .boton-eliminar-uno + .boton-eliminar-todo {
+    margin-top: 10px;
   }
   
   .total-monto {

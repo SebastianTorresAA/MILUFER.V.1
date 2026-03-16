@@ -58,6 +58,7 @@
   box-shadow: var(--sombra-suave);
   margin-bottom: 50px;
   border: 1px solid rgba(255, 102, 178, 0.15);
+  text-align: center;
 }
 
 .info-usuario h2 {
@@ -72,6 +73,7 @@
 .campo-info {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
   font-size: 1.05rem;
   flex-wrap: wrap;
@@ -79,14 +81,15 @@
 }
 
 .campo-info strong {
-  min-width: 160px;
+  min-width: auto;
   color: #333;
   font-weight: 600;
 }
 
 .campo-info span {
   color: #222;
-  flex: 1;
+  flex: 0 1 auto;
+  text-align: center;
 }
 
 /* Sección direcciones */

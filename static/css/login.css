@@ -5,9 +5,9 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #ffeaf6, #fdf2fb);
-    color: #333;
     margin: 0;
     padding: 0;
+    color: #333;
 }
 
 /* Contenedor principal */
@@ -138,7 +138,9 @@ body {
 
 @media (max-width: 480px) {
     .contenedor-login {
-        margin: 40px 16px;
+        width: calc(100% - 32px);
+        max-width: 320px;
+        margin: 40px auto;
         padding: 20px;
     }
     .contenedor-login h1 {

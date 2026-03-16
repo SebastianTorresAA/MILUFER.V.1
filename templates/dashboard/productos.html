@@ -30,17 +30,17 @@
             <tbody>
                 {% for producto in productos %}
                     <tr>
-                        <td>{{ producto.id }}</td>
-                        <td>{{ producto.nombre }}</td>
-                        <td>{{ producto.precio|intcomma }} COP</td>
-                        <td>
+                        <td data-label="ID">{{ producto.id }}</td>
+                        <td data-label="Nombre">{{ producto.nombre }}</td>
+                        <td data-label="Precio">{{ producto.precio|intcomma }} COP</td>
+                        <td data-label="Stock">
                             {% if producto.stock > 0 %}
                                 {{ producto.stock }}
                             {% else %}
                                 <span class="sin-stock">Agotado</span>
                             {% endif %}
                         </td>
-                        <td class="acciones">
+                        <td data-label="Acciones" class="acciones">
                             <a href="{% url 'dashboard:admin_editar_producto' producto.id %}" 
                                class="boton-editar">Editar</a>
                             <a href="{% url 'dashboard:admin_eliminar_producto' producto.id %}" 

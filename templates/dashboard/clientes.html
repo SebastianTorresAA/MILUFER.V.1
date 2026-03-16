@@ -28,21 +28,21 @@
                     {% for cliente in clientes %}
                         <tr>
                             <!-- ID del usuario/cliente -->
-                            <td>{{ cliente.id }}</td>
+                            <td data-label="ID">{{ cliente.id }}</td>
 
                             <!-- Nombre completo o username -->
-                            <td>
+                            <td data-label="Nombre">
                                 {{ cliente.get_full_name|default:cliente.username }}
                             </td>
 
                             <!-- Correo electrónico -->
-                            <td>{{ cliente.email }}</td>
+                            <td data-label="Email">{{ cliente.email }}</td>
 
                             <!-- Fecha en que se registró -->
-                            <td>{{ cliente.date_joined|date:"d/m/Y H:i" }}</td>
+                            <td data-label="Registro">{{ cliente.date_joined|date:"d/m/Y H:i" }}</td>
 
                             <!-- Acciones: ver detalle y editar -->
-                            <td class="acciones">
+                            <td data-label="Acciones" class="acciones">
                                 <a href="{% url 'dashboard:admin_detalle_cliente' cliente.id %}" 
                                    class="boton-ver">
                                     Ver

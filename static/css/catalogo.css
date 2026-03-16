@@ -57,7 +57,7 @@
 
 /* Contenedor general de productos */
 .contenedor-productos {
-  padding: 0 1.8rem 80px;
+  padding: 28px 1.8rem 80px;
   background: linear-gradient(to bottom, rgba(255, 230, 242, 0.3) 0%, transparent 100%);
 }
 
@@ -168,11 +168,18 @@
 /* Responsive */
 @media (max-width: 768px) {
   .encabezado-catalogo {
-    padding: 70px 1.2rem 50px;
+    padding: 56px 1.2rem 36px;
   }
   
   .encabezado-catalogo h1 {
-    font-size: 2.6rem;
+    font-size: 2.2rem;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .encabezado-catalogo p {
+    font-size: 1rem;
+    line-height: 1.55;
   }
   
   .grid-productos {
@@ -185,8 +192,16 @@
 }
 
 @media (max-width: 480px) {
+  .encabezado-catalogo {
+    padding: 44px 1rem 28px;
+  }
+
   .encabezado-catalogo h1 {
-    font-size: 2.2rem;
+    font-size: 1.85rem;
+  }
+
+  .encabezado-catalogo p {
+    font-size: 0.95rem;
   }
   
   .info-producto h3 {
@@ -198,7 +213,8 @@
   }
   
   .boton-ver {
-    padding: 0.8rem 1.8rem;
+    width: 100%;
+    padding: 0.8rem 1rem;
     font-size: 0.98rem;
   }
 }

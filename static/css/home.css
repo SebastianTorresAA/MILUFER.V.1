@@ -227,6 +227,7 @@ footer .copyright {
   
   nav ul {
     gap: 1.6rem;
+    row-gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -237,9 +238,18 @@ footer .copyright {
     padding: 90px 1.2rem 120px;
   }
   
+  nav ul {
+    gap: 0.9rem;
+    row-gap: 0.9rem;
+  }
+
   nav a {
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 138px;
+    padding: 0.62rem 1rem;
+    font-size: 0.95rem;
   }
   
   .redes-sociales {
@@ -256,6 +266,21 @@ footer .copyright {
 @media (max-width: 480px) {
   header h1 {
     font-size: 2.2rem;
+  }
+
+  header .contenedor {
+    gap: 1.2rem;
+  }
+
+  nav ul {
+    gap: 0.7rem;
+    row-gap: 0.8rem;
+  }
+
+  nav a {
+    min-width: 128px;
+    padding: 0.58rem 0.9rem;
+    font-size: 0.9rem;
   }
   
   nav a {

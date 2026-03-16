@@ -31,28 +31,28 @@
                 {% for pedido in pedidos %}
                     <tr>
                         <!-- ID del pedido -->
-                        <td>#{{ pedido.id }}</td>
+                        <td data-label="ID">#{{ pedido.id }}</td>
 
                         <!-- Nombre o email del cliente -->
-                        <td>
+                        <td data-label="Cliente">
                             {{ pedido.usuario.username|default:pedido.usuario.email }}
                         </td>
 
                         <!-- Fecha del pedido -->
-                        <td>{{ pedido.fecha_creacion|date:"d/m/Y H:i" }}</td>
+                        <td data-label="Fecha">{{ pedido.fecha_creacion|date:"d/m/Y H:i" }}</td>
 
                         <!-- Total del pedido -->
-                        <td>{{ pedido.total }} COP</td>
+                        <td data-label="Total">{{ pedido.total }} COP</td>
 
                         <!-- Estado del pedido -->
-                        <td>
+                        <td data-label="Estado">
                             <span class="estado estado-{{ pedido.estado|lower }}">
                                 {{ pedido.get_estado_display|default:pedido.estado }}
                             </span>
                         </td>
 
                         <!-- Acciones -->
-                        <td class="acciones">
+                        <td data-label="Acciones" class="acciones">
                             <!-- Ver detalle -->
                             <a href="{% url 'dashboard:admin_detalle_pedido' pedido.id %}" 
                                class="boton-ver">

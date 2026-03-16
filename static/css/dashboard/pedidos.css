@@ -30,6 +30,7 @@
 /* Tabla de pedidos */
 .tabla-pedidos {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     background-color: #ffffff;
     border-radius: 16px;
@@ -43,6 +44,7 @@
     text-align: center;
     border-bottom: 1px solid #f0e0e8;
     font-size: 0.95rem;
+    overflow-wrap: anywhere;
 }
 
 .tabla-pedidos th {
@@ -174,18 +176,77 @@
 /* Responsive */
 @media (max-width: 768px) {
     .contenedor-pedidos {
-        padding: 24px;
+        width: calc(100% - 16px);
+        padding: 18px 12px;
+        margin: 24px auto;
     }
-    
+
+    .tabla-pedidos,
+    .tabla-pedidos thead,
+    .tabla-pedidos tbody,
+    .tabla-pedidos tr,
     .tabla-pedidos th,
     .tabla-pedidos td {
-        padding: 12px 10px;
-        font-size: 0.9rem;
+        display: block;
+        width: 100%;
+    }
+
+    .tabla-pedidos thead {
+        display: none;
+    }
+
+    .tabla-pedidos {
+        box-shadow: none;
+    }
+
+    .tabla-pedidos tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .tabla-pedidos tbody tr {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 6px 24px rgba(233, 30, 99, 0.18);
+        overflow: hidden;
+    }
+
+    .tabla-pedidos td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        font-size: 0.88rem;
+        text-align: right;
+        border-bottom: 1px solid #f8dce8;
+    }
+
+    .tabla-pedidos td:last-child {
+        border-bottom: none;
+    }
+
+    .tabla-pedidos td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #e91e63;
+        text-align: left;
+        flex: 0 0 42%;
+    }
+
+    .tabla-pedidos td.acciones {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .tabla-pedidos td.acciones::before {
+        align-self: flex-start;
+        margin-bottom: 4px;
     }
     
     .acciones {
-        flex-direction: column;
-        gap: 8px;
+        gap: 10px;
     }
     
     .boton-ver,
@@ -205,5 +266,22 @@
     }
     .sin-pedidos p {
         font-size: 1rem;
+    }
+
+    .tabla-pedidos td {
+        padding: 11px 12px;
+        font-size: 0.82rem;
+    }
+
+    .tabla-pedidos td::before {
+        flex-basis: 40%;
+        font-size: 0.8rem;
+    }
+
+    .boton-ver,
+    .boton-confirmar,
+    .boton-cancelar {
+        font-size: 0.84rem;
+        padding: 10px 12px;
     }
 }
