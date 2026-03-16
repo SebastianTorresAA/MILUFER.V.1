@@ -1,7 +1,8 @@
 from django.db import models
 
-# Create your models here.
-
+# ============================
+#   MODELO DE CATEGORÍAS
+# ============================
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100, unique=True)
     descripcion = models.TextField(blank=True, null=True)
@@ -15,14 +16,31 @@ class Categoria(models.Model):
         return self.nombre
 
 
+# ============================
+#   MODELO DE PRODUCTOS
+# ============================
 class Producto(models.Model):
-    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name="productos")
+    # Relación con categoría
+    categoria = models.ForeignKey(
+        Categoria,
+        on_delete=models.PROTECT,
+        related_name="productos"
+    )
+
+    # Información básica
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField(blank=True, null=True)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField(default=0)
+
+    # Multimedia
     imagen = models.ImageField(upload_to="productos/", blank=True, null=True)
+
+    # Estados
     activo = models.BooleanField(default=True)
+    destacado = models.BooleanField(default=False)  # NUEVO: para marcar productos destacados
+
+    # Metadatos
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
 

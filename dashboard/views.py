@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from productos.models import Producto, Categoria
-from usuarios.models import User
+from usuarios.models import User, Direccion
 from ventas.models import Pedido, PedidoProducto
 from django.db.models import Sum, F, ExpressionWrapper, DecimalField, Avg, Count
 from django.contrib.auth.decorators import user_passes_test
 from django.utils import timezone
 from django import forms
 from django.contrib import messages
-from usuarios.models import Direccion
 
 # Decorador que restringe a superusuarios
 def superuser_required(view_func):
@@ -52,6 +51,14 @@ def admin_editar_producto(request, producto_id):
 def admin_eliminar_producto(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id)
     producto.delete()
+    return redirect("dashboard:productos")
+
+# NUEVO: Alternar destacado
+@superuser_required
+def toggle_destacado(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    producto.destacado = not producto.destacado
+    producto.save()
     return redirect("dashboard:productos")
 
 # -------------------------------
@@ -183,6 +190,7 @@ def detalle_pedido(request, pedido_id):
         "cliente": cliente,
         "direccion": direccion,
     })
+
 @superuser_required
 def confirmar_pedido(request, pedido_id):
     pedido = get_object_or_404(Pedido, id=pedido_id)
