@@ -51,7 +51,7 @@ section h3 {
 
 .tarjeta:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 36px rgba(233, 30, 99, 0.28);
+    box-shadow: 0 12px 36px rgba(233, 30, 99, 0.28);    
 }
 
 /* Listas */
@@ -59,11 +59,12 @@ ul {
     list-style: none;
     padding: 0;
     margin: 0 0 20px;
+    
 }
 
 ul li {
     padding: 10px 0;
-    border-bottom: 1px solid #f0e0e8;
+    border-bottom: none;
     color: #555;
     font-size: 0.95rem;
 }
